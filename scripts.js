@@ -9,7 +9,8 @@ const testURL = 'https://api.ati.su/v1.0/dictionaries/cities/240';
 const myInit = {
     method: 'GET',
     headers: {
-        'method': 'GET'
+        'method': 'GET',
+        'Access-Control-Allow-Origin': '*',
     }
 
 };
