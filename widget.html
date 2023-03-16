@@ -1,19 +1,63 @@
-<html>
- <head>
-  <title>Основные h1 — schoolsw3.com</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
- </head>
- <body>
- 
-  <h1>HTML5 Основные h1</h1>
-  
-  <h1>Это заголовок 1</h1>
-  <h2>Это заголовок 2</h2>
-  <h3>Это заголовок 3</h3>
-  <h4>Это заголовок 4</h4>
-  <h5>Это заголовок 5</h5>
-  <h6>Это заголовок 6</h6>
-
- </body>
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+		<title>Message</title>
+		<link rel="shortcut icon" href="icon.png" type="image/png">
+		<link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
+		<link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="app/style.css">
+		<style>
+		  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+		</style>
+	</head>
+	<body>
+		<div id="app" v-cloak>
+			<v-app 
+		    id="inspire"
+		  >
+		  <div
+		  	style="display: flex;padding: 5px;"
+		  >
+        <v-textarea
+          solo
+          rows="2"
+          hide-details
+          :error="message_text_error"
+          label="Данные"
+          v-model="message_text"
+        >        	
+        </v-textarea>
+        <v-btn
+        	style="height: 100%;margin: 0 0 0 5px;"
+        	:loading="send_message_load"
+        	@click="send_message"
+        >
+        	OK
+      	</v-btn>      	
+      </div>
+      <div
+      	style="padding: 0 5px 0 5px;"
+      >
+      	<v-card
+          class="mx-auto"
+          min-height="100"
+        >
+          <v-card-text 
+          	class="text-left"
+          	style="color: black;font-size: 17px;"
+          >
+            {{message}}
+          </v-card-text>
+        </v-card>
+      </div>
+      </v-app>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js" integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+		<script type="text/javascript" src="app/vue.js"></script>
+	</body>
 </html>
