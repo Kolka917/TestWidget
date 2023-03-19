@@ -7,7 +7,7 @@ $(document).ready(function() {
 					if(status === "success") {
 						console.log("Post successfully created!");
 						let search_result = document.getElementById('search_box-result');
-						let table = '<table><tr><th>Наименование</th><th>Id для отправки в ATI</th>/tr>';
+						let table = '<table><tr><th>Наименование</th><th>Id для отправки в ATI</th></tr>';
 
 						data.forEach(function(d){
 							table +=
