@@ -3,7 +3,7 @@ $(document).ready(function () {
         var search = $(this).val();
         if ((search != '') && (search.length > 2)) {
             $.ajax({
-                url: "https://proxy.cors.sh/https://api.ati.su/v1.0/dictionaries/cities?name=" + search + "&cityNameOnly=true",
+                url: "https://api.ati.su/v1.0/dictionaries/cities?name=" + search + "&cityNameOnly=true",
                 headers: {
                     'x-cors-api-key': 'temp_96f3dd2cacb5a4a98c8728b253decd48'
                 },
