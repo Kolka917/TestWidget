@@ -30,7 +30,7 @@ $(document).ready(function () {
 
                             search_result.innerHTML = table;
                         } else {
-                            let notFoundResult = 'Не найдено города с указанным названием. Если вы уверены, что название верное, попробуйте ввести его еще раз';
+                            let notFoundResult = '<p>Не найдено города с указанным названием. Если вы уверены, что название верное, попробуйте ввести его еще раз.</p>';
                             search_result.innerHTML = notFoundResult;
                         }
                     }
