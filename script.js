@@ -12,22 +12,27 @@ $(document).ready(function () {
                 success: function (data, status) {
                     if (status === "success") {
                         let search_result = document.getElementById('search_box-result');
-                        let table = '<table><tr><th>Наименование</th><th>Id для отправки в ATI</th></tr>';
+                        if (data.length > 1) {
+                            let table = '<table><tr><th>Наименование</th><th>Id для отправки в ATI</th></tr>';
 
-                        data.forEach(function (d) {
-                            table +=
-                                "<tr>\n" +
-                                "<td className=\"search_result-name\">\n" +
-                                "	<a href=\"#\">" + d.FullName + "</a>\n" +
-                                "</td>\n" +
-                                "<td className=\"search_result-name\">\n" +
-                                "	<a href=\"#\">" + d.CityId + "</a>\n" +
-                                "</td>\n" +
-                                "</tr>";
-                        })
-                        table += '</table>';
+                            data.forEach(function (d) {
+                                table +=
+                                    "<tr>\n" +
+                                    "<td className=\"search_result-name\">\n" +
+                                    "	<a href=\"#\">" + d.FullName + "</a>\n" +
+                                    "</td>\n" +
+                                    "<td className=\"search_result-name\">\n" +
+                                    "	<a href=\"#\">" + d.CityId + "</a>\n" +
+                                    "</td>\n" +
+                                    "</tr>";
+                            })
+                            table += '</table>';
 
-                        search_result.innerHTML = table;
+                            search_result.innerHTML = table;
+                        } else {
+                            let notFoundResult = 'Не найдено города с указанным названием. Если вы уверены, что название верное, попробуйте ввести его еще раз';
+                            search_result.innerHTML = notFoundResult;
+                        }
                     }
                 }
             })
