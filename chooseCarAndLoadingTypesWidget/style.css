@@ -1,6 +1,6 @@
 .dropdown-menu {
     max-height: 150px;
-    width: 300px;
+    width: 200px;
     overflow-y: scroll;
 }
 
@@ -9,5 +9,5 @@
 }
 
 .btn-group {
-    width: 300px;
+    width: 200px;
 }
