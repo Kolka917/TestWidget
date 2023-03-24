@@ -18,7 +18,7 @@ $(document).ready(function () {
                                     "	<a href=\"#\">" + d.Name + "</a>\n" +
                                     "</td>\n" +
                                     "<td className=\"search_result-name\">\n" +
-                                    "	<a href=\"#\">" + d.TypeId + "</a>\n" +
+                                    "	<a href=\"#\">" + d.Id + "</a>\n" +
                                     "</td>\n" +
                                     "</tr>";
                             })
