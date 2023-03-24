@@ -1,6 +1,6 @@
 $(document).ready(function () {
             $.ajax({
-                url: "https://proxy.cors.sh/https://api.ati.su/v1.0/dictionaries/carTypes",
+                url: "https://proxy.cors.sh/https://api.ati.su/v1.0/dictionaries/loadingTypes",
                 headers: {
                     'x-cors-api-key': 'temp_96f3dd2cacb5a4a98c8728b253decd48'
                 },
