@@ -13,22 +13,15 @@ $(document).ready(function () {
                     if (status === "success") {
                         let search_result = document.getElementById('search_box-result');
                         if (data.length > 1) {
-                            let table = '<table><tr><th>Наименование</th><th>Id для отправки в ATI</th></tr>';
+                            let table = '<form>' +
+                            '<select class="search_output" size="6"  multiple>';
 
-                            data.forEach(function (d) {
-                                table +=
-                                    "<tr>\n" +
-                                    "<td className=\"search_result-name\">\n" +
-                                    "	<a href=\"#\">" + d.FullName + "</a>\n" +
-                                    "</td>\n" +
-                                    "<td className=\"search_result-name\">\n" +
-                                    "	<a href=\"#\">" + d.CityId + "</a>\n" +
-                                    "</td>\n" +
-                                    "</tr>";
-                            })
-                            table += '</table>';
+                        data.forEach(function (d) {
+                            table += '<option>' + d.FullName + '(' + d.CityId + ')';
+                        })
+                        table += '</select></form>';
 
-                            search_result.innerHTML = table;
+                        search_result.innerHTML = table;
                         } else {
                             let notFoundResult = '<p>Не найдено города с указанным названием. Если вы уверены, что название верное, попробуйте ввести его еще раз.</p>';
                             search_result.innerHTML = notFoundResult;
@@ -37,26 +30,6 @@ $(document).ready(function () {
                 }
             })
         } else {
-            $result.html('');
-            $result.fadeOut(100);
-        }
-    });
-
-    $(document).on('click', function (e) {
-        if (!$(e.target).closest('.search_box').length) {
-            $result.html('');
-            $result.fadeOut(100);
-        }
-    });
-
-    $(document).on('click', '.search_result-name a', function () {
-        $('#search').val($(this).text());
-        $result.fadeOut(100);
-        return false;
-    });
-
-    $(document).on('click', function (e) {
-        if (!$(e.target).closest('.search_box').length) {
             $result.html('');
             $result.fadeOut(100);
         }
