@@ -22,7 +22,7 @@
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
       let clientIdElem = document.getElementById('clientIdElem');
-      clientIdElem.innerHTML += urlParams.get(client_id);
+      clientIdElem.innerHTML += urlParams.get('client_id');
     })
   </script>
     
