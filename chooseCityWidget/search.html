@@ -15,16 +15,17 @@
     </form>
     <div id="search_box-result"></div>
 </div>
-    <p id='clientIdElement'></p>
-    
-<script type="text/javascript">
-    $(function(){
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        let clientId = document.getElementById('clientIdElement');
-        search_result.innerHTML = clientId;
-    })
-  </script>
+   <p id='clientIdElement'>1</p>
+
+    <script type="text/javascript">
+        $(function(){
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            let clientId = document.getElementById('clientIdElement');
+
+            clientId.innerHTML += urlParams.get('clientId');
+        })
+    </script>
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdn.saas-support.com/crm_assets/build/widget/js/envycrmwidget.min.js"></script>
