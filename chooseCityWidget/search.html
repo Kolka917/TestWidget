@@ -15,14 +15,14 @@
     </form>
     <div id="search_box-result"></div>
 </div>
-    <p id='clientIdElem'>11</p>
+    <p id='clientIdElem'>111</p>
     
     <script type="text/javascript">
     $(function(){
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
-      let clientIdElem = document.getElementById('clientIdElem');
-      clientIdElem.innerHTML += urlParams.get('client_id');
+      console.log(queryString);
+        console.log(urlParams);
     })
   </script>
     
