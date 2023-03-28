@@ -11,7 +11,7 @@ $(document).ready(function () {
                 let fieldId = document.getElementById('fieldId');
                 let fieldIdData = '';
                 Array.prototype.forEach.call(data.result, d => {
-                    if (d.name_id === "crm_582598") {
+                    if (d.name === "Маршрут.Загрузка.Расположение. id Города из словаря") {
                         fieldIdData += d.id
                     }
                 })
