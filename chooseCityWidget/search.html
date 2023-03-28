@@ -27,11 +27,9 @@
             var value = select.options[select.selectedIndex].value;
             var fieldId = document.getElementById("fieldId").innerHTML;
 
-            const queryString = window.location.href
-            const urlParams = new URLSearchParams(queryString);
-            let clientId = urlParams.get('client_id');
-            let dealId = urlParams.get('deal_id')
-            console.log(urlParams);
+            var sPageURL = window.location.search.substring(1);
+            var sURLVariables = sPageURL.split('&');
+            console.log(sURLVariables);
 
             $.ajax({
                 url: 'https://proxy.cors.sh/https://logisticplus.envycrm.com/openapi/v1/deal/updateDealValue/?api_key=44ac90e848a1b3a3efd692e259461c47e8405b5f',
