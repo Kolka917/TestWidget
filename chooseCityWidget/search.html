@@ -30,6 +30,23 @@
             var sPageURL = window.location.search.substring(1);
             var sURLVariables = sPageURL.split('&');
             console.log(sURLVariables);
+            
+            let clientId = '';
+            let dealId = '';
+            
+
+            for (var i = 0; i < sURLVariables.length; i++)
+            {
+                var sParameterName = sURLVariables[i].split('=');
+                if (sParameterName[0] === 'deal_id')
+                {
+                    dealId = sParameterName[1];
+                }
+                if (sParameterName[0] === 'client_id')
+                {
+                    clientId = sParameterName[1];
+                }
+            }
 
             $.ajax({
                 url: 'https://proxy.cors.sh/https://logisticplus.envycrm.com/openapi/v1/deal/updateDealValue/?api_key=44ac90e848a1b3a3efd692e259461c47e8405b5f',
