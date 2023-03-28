@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!-- saved from url=(0056)https://kolka917.github.io/TestWidget/index.html?search= -->
+<html lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bиджет "Выбор города назначения"</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<p>Выбор города назначения груза</p>
+<div class="search_box">
+    <form action="index.html?search=">
+        <input class="search_input" type="text" name="search" id="search" placeholder="Введите город назначения">
+    </form>
+    <div id="search_box-result"></div>
+
+    <p>Идентификатор города назначения покажется ниже после выбора из списка</p>
+    <div id="selectedCityId"></div>
+    <p>Идентификатор поля сделки для города назначения покажется ниже</p>
+    <div id="fieldId"></div>
+    <script>
+        function display() {
+            var select = document.getElementById("selectCity");
+            var valueId = select.options[select.selectedIndex].value;
+            var selectedCityId = document.getElementById("selectedCityId");
+            selectedCityId.innerHTML = valueId;
+            var fieldId = document.getElementById("fieldId").innerHTML;
+
+            var sPageURL = window.location.search.substring(1);
+            var sURLVariables = sPageURL.split('&');
+            console.log(sURLVariables);
+            
+            let clientId = '';
+            let dealId = '';
+            
+
+            for (var i = 0; i < sURLVariables.length; i++)
+            {
+                var sParameterName = sURLVariables[i].split('=');
+                if (sParameterName[0] === 'deal_id')
+                {
+                    dealId = sParameterName[1];
+                }
+                if (sParameterName[0] === 'client_id')
+                {
+                    clientId = sParameterName[1];
+                }
+            }
+            
+            console.log(clientId);
+            console.log(dealId);
+
+            $.ajax({
+                url: 'https://proxy.cors.sh/https://logisticplus.envycrm.com/openapi/v1/deal/updateDealValue/?api_key=44ac90e848a1b3a3efd692e259461c47e8405b5f',
+                headers: {
+                    'x-cors-api-key': 'temp_96f3dd2cacb5a4a98c8728b253decd48'
+                },
+                method: 'POST',
+                dataType: 'json',
+                data: JSON.stringify({"request":{"deal_id": dealId, "client_id": clientId, "user_id": 73481, "employee_id": 0, "fields":[{ "input_id": fieldId, "value": valueId, "value_type_id": 2}]}}),
+                success: function(data){
+                    console.log('succes: '+data);
+                    alert('Соответствующее поле в сделке успешно обновлено')
+                }
+            });
+        }
+    </script>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdn.saas-support.com/crm_assets/build/widget/js/envycrmwidget.min.js"></script>
+<script type="text/javascript" src="https://kolka917.github.io/TestWidget/chooseCityDestinationWidget/script.js"></script>
+
+</body>
+</html>

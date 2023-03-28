@@ -6,27 +6,27 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Bиджет "Выбор города"</title>
+    <title>Bиджет "Выбор города отправки"</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<p>Виджет предназначен для поиска id городов на площадке ATI</p>
+<p>Выбор города отправки груза</p>
 <div class="search_box">
     <form action="index.html?search=">
-        <input class="search_input" type="text" name="search" id="search" placeholder="Введите город">
+        <input class="search_input" type="text" name="search" id="search" placeholder="Введите город отправки">
     </form>
     <div id="search_box-result"></div>
 
     <p>Идентификатор города отправки покажется ниже после выбора из списка</p>
-    <div id="result"></div>
+    <div id="selectedCityId"></div>
     <p>Идентификатор поля сделки для города отправки покажется ниже</p>
     <div id="fieldId"></div>
     <script>
         function display() {
             var select = document.getElementById("selectCity");
-            var value = select.options[select.selectedIndex].value;
-            var reslutElem = document.getElementById("result");
-            reslutElem.innerHTML = value;
+            var valueId = select.options[select.selectedIndex].value;
+            var selectedCityId = document.getElementById("selectedCityId");
+            selectedCityId.innerHTML = valueId;
             var fieldId = document.getElementById("fieldId").innerHTML;
 
             var sPageURL = window.location.search.substring(1);
@@ -60,9 +60,10 @@
                 },
                 method: 'POST',
                 dataType: 'json',
-                data: JSON.stringify({"request":{"deal_id": dealId, "client_id": clientId, "user_id": 73481, "employee_id": 0, "fields":[{ "input_id": fieldId, "value": value, "value_type_id": 2}]}}),
+                data: JSON.stringify({"request":{"deal_id": dealId, "client_id": clientId, "user_id": 73481, "employee_id": 0, "fields":[{ "input_id": fieldId, "value": valueId, "value_type_id": 2}]}}),
                 success: function(data){
                     console.log('succes: '+data);
+                    alert('Соответствующее поле в сделке успешно обновлено')
                 }
             });
         }

@@ -1,0 +1,10 @@
+.search_input {
+    display:inline-block;
+    width: 400px;
+}
+
+.search_output {
+    display:inline-block;
+    width: 400px;
+    overflow: scroll;
+}
