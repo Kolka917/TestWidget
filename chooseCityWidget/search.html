@@ -25,6 +25,8 @@
         function display() {
             var select = document.getElementById("selectCity");
             var value = select.options[select.selectedIndex].value;
+            var reslutElem = document.getElementById("result");
+            reslutElem.innerHTML = value;
             var fieldId = document.getElementById("fieldId").innerHTML;
 
             var sPageURL = window.location.search.substring(1);
