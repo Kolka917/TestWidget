@@ -1,23 +1,56 @@
 <!DOCTYPE html>
 <!-- saved from url=(0056)https://kolka917.github.io/TestWidget/index.html?search= -->
-<html lang="ru"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+<html lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Bиджет "Выбор города"</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-     <p>Виджет предназначен для поиска id городов на площадке ATI</p>
+<p>Виджет предназначен для поиска id городов на площадке ATI</p>
 <div class="search_box">
-    <form action="https://kolka917.github.io/TestWidget/chooseCityWidget/index.html?search=">
+    <form action="index.html?search=">
         <input class="search_input" type="text" name="search" id="search" placeholder="Введите город">
     </form>
     <div id="search_box-result"></div>
+
+    <p>Идентификатор города отправки покажется ниже после выбора из списка</p>
+    <div id="result"></div>
+    <p>Идентификатор поля сделки для города отправки покажется ниже</p>
+    <div id="fieldId"></div>
+    <script>
+        function display() {
+            var select = document.getElementById("selectCity");
+            var value = select.options[select.selectedIndex].value;
+            var fieldId = document.getElementById("fieldId").innerHTML;
+
+            const queryString = window.location.href
+            const urlParams = new URLSearchParams(queryString);
+            let clientId = urlParams.get('client_id');
+            let dealId = urlParams.get('deal_id')
+
+            $.ajax({
+                url: 'https://proxy.cors.sh/https://logisticplus.envycrm.com/openapi/v1/deal/updateDealValue/?api_key=44ac90e848a1b3a3efd692e259461c47e8405b5f',
+                headers: {
+                    'x-cors-api-key': 'temp_96f3dd2cacb5a4a98c8728b253decd48'
+                },
+                method: 'POST',
+                dataType: 'json',
+                data: JSON.stringify({"request":{"deal_id": dealId, "client_id": clientId, "user_id": 73481, "employee_id": 0, "fields":[{ "input_id": fieldId, "value": value, "value_type_id": 2}]}}),
+                success: function(data){
+                    console.log('succes: '+data);
+                }
+            });
+        }
+    </script>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdn.saas-support.com/crm_assets/build/widget/js/envycrmwidget.min.js"></script>
-<script type="text/javascript" src="https://kolka917.github.io/TestWidget/chooseCityWidget/script.js"></script>
+<script type="text/javascript" src="script.js"></script>
 
-</body></html>
+</body>
+</html>

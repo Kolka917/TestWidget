@@ -17,13 +17,14 @@
           return [{
             content: {
               type: 'iframe',
-              url: 'https://kolka917.github.io/TestWidget/chooseCityWidget/search.html' + urlParams,
+              url: 'search.html' + urlParams,
               height: 120 // Max height is 500
             }
           }];
         }
       };
-      window.EnvyCrmWidget.init(params)
+      const w = window.EnvyCrmWidget;
+      w.init(params)
     })
   </script>
 </body>
