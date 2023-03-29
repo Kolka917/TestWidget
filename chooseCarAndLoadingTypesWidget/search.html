@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html lang="ru"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+<html lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Bиджет "Тип загрузки-выгрузки и типы кузовов"</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
 <body>
-     <p>Ведется разработка виджета. Не трогать!</p>
+<p>Ведется разработка виджета. Не трогать!</p>
 <div>
     <div class="search_box">
         <div id="search_box-result-car-type"></div>
@@ -18,13 +20,21 @@
     <div class="search_box">
         <div id="search_box-result-loading-type"></div>
     </div>
+
+    <p>Идентификатор поля сделки для типа загрузки-выгрузки покажется ниже</p>
+    <div id="fieldIdLoading"></div>
+    <p>Идентификатор поля сделки для типа кузова покажется ниже</p>
+    <div id="fieldIdCar"></div>
+
+
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdn.saas-support.com/crm_assets/build/widget/js/envycrmwidget.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-<script type="text/javascript" src="https://kolka917.github.io/TestWidget/chooseCarAndLoadingTypesWidget/script.js"></script>
 
-</body></html>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
+<script type="text/javascript" src="script.js"></script>
+
+</body>
+</html>
