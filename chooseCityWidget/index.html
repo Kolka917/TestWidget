@@ -23,18 +23,7 @@
           }];
         }
       };
-      let w = window.EnvyCrmWidget;
-      w.init(params)
-      console.log(0);
-      w.getDealValues()
-              .then((data) => {
-                console.log(1);
-                console.log(data);
-              })
-              .catch((e) => {
-                console.log(e);
-                console.log(2)
-              });
+      window.EnvyCrmWidget.init(params)
     })
   </script>
 </body>
