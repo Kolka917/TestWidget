@@ -24,14 +24,16 @@
         }
       };
       let w = window.EnvyCrmWidget;
+      w.init(params)
       w.getDealValues()
               .then((data) => {
+                console.log(1);
                 console.log(data);
               })
               .catch((e) => {
                 console.log(e);
+                console.log(2)
               });
-      w.init(params)
     })
   </script>
 </body>
