@@ -10,6 +10,15 @@
 
 <body>
   <script type="text/javascript">
+    console.log(1);
+    window.EnvyCrmWidget.getDealValues()
+            .then((data) => {
+              console.log(2);
+              console.log(data);
+            })
+            .catch((e) => {
+              console.log(e);
+            });
     $(function(){
       let params = {
         'after-deal-task': function (params) {
@@ -24,15 +33,6 @@
         }
       };
       window.EnvyCrmWidget.init(params)
-      console.log(1);
-      window.EnvyCrmWidget.getDealValues()
-              .then((data) => {
-                console.log(2);
-                console.log(data);
-              })
-              .catch((e) => {
-                console.log(e);
-              });
     })
   </script>
 </body>
