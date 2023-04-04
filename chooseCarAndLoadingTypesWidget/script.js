@@ -1,4 +1,13 @@
 $(document).ready(function () {
+    console.log(1)
+    var w = window.EnvyCrmWidget
+    w.getDealValues()
+        .then((data) => {
+            console.log(data);
+        })
+        .catch((e) => {
+            console.log(e);
+        });
     $.get({
         url: "https://proxy.cors.sh/https://logisticplus.envycrm.com/openapi/v1/deal/getListInputs/?api_key=44ac90e848a1b3a3efd692e259461c47e8405b5f&type=custom",
         headers: {
