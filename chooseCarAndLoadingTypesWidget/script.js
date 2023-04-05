@@ -1,7 +1,7 @@
 $(document).ready(function () {
     console.log(1)
     var w = window.EnvyCrmWidget
-    w.getDealValues()
+    w.getDeal()
         .then((data) => {
             console.log(data);
         })
