@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    console.log(1)
+    console.log(2)
     var w = window.EnvyCrmWidget
     w.getDeal()
         .then((data) => {
