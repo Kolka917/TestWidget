@@ -16,6 +16,7 @@ $(document).ready(function () {
         contentType: 'application/json',
         type: 'GET',
         success: function (data, status) {
+            console.log(data);
             if (status === "success") {
                 let fieldIdCar = document.getElementById('fieldIdCar');
                 let fieldIdLoading = document.getElementById('fieldIdLoading');
