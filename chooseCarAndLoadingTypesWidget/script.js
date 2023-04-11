@@ -207,6 +207,19 @@ function saveLoadingType() {
     console.log(dealId);
     console.log(valueId)
 
+    var w = window.EnvyCrmWidget
+    w.changeDealValue({
+        input_id: fieldId,
+        value: valueId
+    })
+        .then((data) => {
+            console.log(data);
+        })
+        .catch((e) => {
+            console.log(e);
+        });
+
+
     $.ajax({
         url: 'https://proxy.cors.sh/https://logisticplus.envycrm.com/openapi/v1/deal/updateDealValue/?api_key=44ac90e848a1b3a3efd692e259461c47e8405b5f',
         headers: {
