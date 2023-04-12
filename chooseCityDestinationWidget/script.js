@@ -23,7 +23,7 @@ $(document).ready(function () {
 
     $('#search').on('keyup', function () {
         var search = $(this).val();
-        if ((search != '') && (search.length > 2)) {
+        if ((search !== '') && (search.length > 2)) {
             $.ajax({
                 url: "https://proxy.cors.sh/https://api.ati.su/v1.0/dictionaries/cities?name=" + search + "&cityNameOnly=true",
                 headers: {
