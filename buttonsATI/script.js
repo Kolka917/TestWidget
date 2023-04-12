@@ -56,40 +56,33 @@ function createCargo() {
                         // code block
                     }
                 })
+                console.log(routeLoadingCityId)
+                console.log(routeUnloadingCityId)
+
+                w.getDealValue({
+                    input_id: routeLoadingCityId,
+                    type: 'custom'
+                })
+                    .then((data) => {
+                        console.log(data);
+                    })
+                    .catch((e) => {
+                        console.log(e);
+                    });
+
+                w.getDealValue({
+                    input_id: routeUnloadingCityId,
+                    type: 'custom'
+                })
+                    .then((data) => {
+                        console.log(data);
+                    })
+                    .catch((e) => {
+                        console.log(e);
+                    });
             }
         }
     })
-    console.log(routeLoadingCityId)
-    console.log(routeUnloadingCityId)
-
-    w.getDealValue({
-        input_id: routeLoadingCityId,
-        type: 'custom'
-    })
-        .then((data) => {
-            console.log(data);
-        })
-        .catch((e) => {
-            console.log(e);
-        });
-
-    w.getDealValue({
-        input_id: routeUnloadingCityId,
-        type: 'custom'
-    })
-        .then((data) => {
-            console.log(data);
-        })
-        .catch((e) => {
-            console.log(e);
-        });
-
-
-
-
-
-
-
 
 
 
