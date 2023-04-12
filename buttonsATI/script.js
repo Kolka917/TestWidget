@@ -58,6 +58,8 @@ function createCargo() {
             }
         }
     })
+    console.log(routeLoadingCityId)
+    console.log(routeUnloadingCityId)
 
     w.getDealValue({
         input_id: routeLoadingCityId,
