@@ -47,10 +47,12 @@ function createCargo() {
                 Array.prototype.forEach.call(data.result, d => {
                     switch(d.name) {
                         case ('Маршрут. Разгрузка. id города из словаря'):
-                            routeUnloadingCityId += d.id;
+                            console.log("в цикле" + d.id)
+                            routeUnloadingCityId = d.id;
                             break;
                         case ('Маршрут.Загрузка.Расположение. id Города из словаря'):
-                            routeLoadingCityId += d.id;
+                            console.log("в цикле" + d.id)
+                            routeLoadingCityId = d.id;
                             break;
                         default:
                         // code block
