@@ -17,11 +17,11 @@ function createCargo() {
     let cargoUnits
     let cargoInnerId
     let routeLoadingType
-    let routeLoadingCityId
+    let routeLoadingCityIdFieldIf
     let routeLoadingAddress
     let routeLoadingDatesType
     let routeUnloadingType
-    let routeUnloadingCityId
+    let routeUnloadingCityIdFieldId
     let routeUnloadingAddress
     let transportLoadingUnloadingTypeCommon
     let transportLoadingUnloadingTypeExact
@@ -43,26 +43,21 @@ function createCargo() {
         type: 'GET',
         success: function (data, status) {
             if (status === "success") {
-                console.log(data);
                 Array.prototype.forEach.call(data.result, d => {
                     switch(d.name) {
                         case ('Маршрут. Разгрузка. id города из словаря'):
-                            console.log("в цикле" + d.id)
-                            routeUnloadingCityId = d.id;
+                            routeUnloadingCityIdFieldId = d.id;
                             break;
                         case ('Маршрут.Загрузка.Расположение. id Города из словаря'):
-                            console.log("в цикле" + d.id)
-                            routeLoadingCityId = d.id;
+                            routeLoadingCityIdFieldIf = d.id;
                             break;
                         default:
                         // code block
                     }
                 })
-                console.log(routeLoadingCityId)
-                console.log(routeUnloadingCityId)
 
                 w.getDealValue({
-                    input_id: routeLoadingCityId,
+                    input_id: routeLoadingCityIdFieldIf,
                     type: 'custom'
                 })
                     .then((data) => {
@@ -73,7 +68,7 @@ function createCargo() {
                     });
 
                 w.getDealValue({
-                    input_id: routeUnloadingCityId,
+                    input_id: routeUnloadingCityIdFieldId,
                     type: 'custom'
                 })
                     .then((data) => {
