@@ -125,7 +125,8 @@ function createCargo() {
                     method: 'POST',
                     headers: {
                         'x-cors-api-key': 'temp_96f3dd2cacb5a4a98c8728b253decd48',
-                        'Authorization': 'Bearer 6143fe5dba704e469631712649f99a7a'
+                        'Authorization': 'Bearer 6143fe5dba704e469631712649f99a7a',
+                        'Content-Type': 'application/json'
                     },
                     body: JSON.stringify(
                         {
