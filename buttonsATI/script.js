@@ -101,25 +101,25 @@ function createCargo() {
 
 
                 let cargoNameValue = getValue(cargoNameFieldId)
-                let cargoQuantityValue= getValue(cargoQuantityFieldId)
-                let cargoUnitsValue= getValue(cargoUnitsFieldId)
-                let cargoInnerIdValue= getValue(cargoInnerIdFieldId)
-                let routeLoadingTypeValue= getValue(routeLoadingTypeFieldId)
-                let routeLoadingCityIdValue= getValue(routeLoadingCityIdFieldId)
-                let routeLoadingAddressValue= getValue(routeLoadingAddressFieldId)
-                let routeLoadingDatesTypeValue= getValue(routeLoadingDatesTypeFieldId)
-                let routeUnloadingTypeValue= getValue(routeUnloadingTypeFieldId)
-                let routeUnloadingCityIdValue= getValue(routeUnloadingCityIdFieldId)
-                let routeUnloadingAddressValue= getValue(routeUnloadingAddressFieldId)
-                let transportLoadingUnloadingTypeCommonValue= getValue(transportLoadingUnloadingTypeCommonFieldId)
-                let transportLoadingUnloadingTypeExactValue= getValue(transportLoadingUnloadingTypeExactFieldId)
-                let transportTypeValue= getValue(transportTypeFieldId)
-                let paymentTypeValue= getValue(paymentTypeFieldId)
-                let paymentCurrencyTypeValue= getValue(paymentCurrencyTypeFieldId)
-                let paymentWithVatValue= getValue(paymentWithVatFieldId)
-                let paymentWithoutVatValue= getValue(paymentWithoutVatFieldId)
-                let contactsIdValue= getValue(contactsIdFieldId)
-                console.log('contactNew' + contactsIdValue)
+                let cargoQuantityValue = getValue(cargoQuantityFieldId)
+                let cargoUnitsValue = getValue(cargoUnitsFieldId)
+                let cargoInnerIdValue = getValue(cargoInnerIdFieldId)
+                let routeLoadingTypeValue = getValue(routeLoadingTypeFieldId)
+                let routeLoadingCityIdValue = getValue(routeLoadingCityIdFieldId)
+                let routeLoadingAddressValue = getValue(routeLoadingAddressFieldId)
+                let routeLoadingDatesTypeValue = getValue(routeLoadingDatesTypeFieldId)
+                let routeUnloadingTypeValue = getValue(routeUnloadingTypeFieldId)
+                let routeUnloadingCityIdValue = getValue(routeUnloadingCityIdFieldId)
+                let routeUnloadingAddressValue = getValue(routeUnloadingAddressFieldId)
+                let transportLoadingUnloadingTypeCommonValue = getValue(transportLoadingUnloadingTypeCommonFieldId)
+                let transportLoadingUnloadingTypeExactValue = getValue(transportLoadingUnloadingTypeExactFieldId)
+                let transportTypeValue = getValue(transportTypeFieldId)
+                let paymentTypeValue = getValue(paymentTypeFieldId)
+                let paymentCurrencyTypeValue = getValue(paymentCurrencyTypeFieldId)
+                let paymentWithVatValue = getValue(paymentWithVatFieldId)
+                let paymentWithoutVatValue = getValue(paymentWithoutVatFieldId)
+                let contactsIdValue = getValue(contactsIdFieldId)
+                console.log('contactNewN' + contactsIdValue)
 
 
                 // fetch('https://proxy.cors.sh/https://api.ati.su/v2/cargos', {
@@ -217,13 +217,11 @@ function createCargo() {
 }
 
 function getValue(inputId) {
-    const value = window.EnvyCrmWidget.getDealValue({
+    return window.EnvyCrmWidget.getDealValue({
         input_id: inputId,
-        type: 'custom'
-    }).then((data) => {
-        console.log(data.value)
-        return data.value;
-    })
-
-    return Promise.resolve(value);
+        type: 'custom'})
+        .then((data) => data.json())
+        .then((data) => {
+            return data.value
+        })
 }
