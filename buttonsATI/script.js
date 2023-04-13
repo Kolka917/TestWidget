@@ -118,79 +118,80 @@ function createCargo() {
                 let paymentWithVatValue= getValue(paymentWithVatFieldId)
                 let paymentWithoutVatValue= getValue(paymentWithoutVatFieldId)
                 let contactsIdValue= getValue(contactsIdFieldId)
+                console.log('contact' + contactsIdValue)
 
 
-                fetch('https://proxy.cors.sh/https://api.ati.su/v2/cargos', {
-                    method: 'POST',
-                    headers: {
-                        'x-cors-api-key': 'temp_96f3dd2cacb5a4a98c8728b253decd48',
-                        'Authorization': 'Bearer 6143fe5dba704e469631712649f99a7a'
-                    },
-                    body: JSON.stringify(
-                        {
-                            "cargo_application": {
-                                "route": {
-                                    "loading": {
-                                        "dates": {
-                                            "type": routeLoadingDatesTypeValue
-                                        },
-                                        "cargos": [
-                                            {
-                                                "name": cargoNameValue,
-                                                "weight": {
-                                                    "quantity": cargoQuantityValue,
-                                                    "type": cargoUnitsValue
-                                                },
-                                                "id": cargoInnerIdValue
-                                            }
-                                        ],
-                                        "location": {
-                                            "type": routeLoadingTypeValue,
-                                            "city_id": routeLoadingCityIdValue,
-                                            "address": routeLoadingAddressValue
-                                        }
-                                    },
-                                    "unloading": {
-                                        "location": {
-                                            "type": routeUnloadingTypeValue,
-                                            "city_id": routeUnloadingCityIdValue,
-                                            "address": routeUnloadingAddressValue
-                                        }
-                                    }
-                                },
-                                "truck": {
-                                    "load_type": transportLoadingUnloadingTypeCommonValue,
-                                    "body_types": [
-                                        transportTypeValue
-                                    ],
-                                    "body_loading": {
-                                        "types": [
-                                            transportLoadingUnloadingTypeExactValue
-                                        ]
-                                    },
-                                    "body_unloading": {
-                                        "types": [
-                                            transportLoadingUnloadingTypeExactValue
-                                        ]
-                                    }
-                                },
-                                "payment": {
-                                    "type": paymentTypeValue,
-                                    "currency_type": paymentCurrencyTypeValue,
-                                    "rate_with_vat": paymentWithVatValue,
-                                    "rate_without_vat": paymentWithoutVatValue
-                                },
-                                "contacts": [
-                                    contactsIdValue
-                                ]
-                            }
-                        }
-                    )
-                }).then(response => {
-                    if (response.status === 200) {
-                        alert('Груз успешно создан в ATI')
-                    }
-                })
+                // fetch('https://proxy.cors.sh/https://api.ati.su/v2/cargos', {
+                //     method: 'POST',
+                //     headers: {
+                //         'x-cors-api-key': 'temp_96f3dd2cacb5a4a98c8728b253decd48',
+                //         'Authorization': 'Bearer 6143fe5dba704e469631712649f99a7a'
+                //     },
+                //     body: JSON.stringify(
+                //         {
+                //             "cargo_application": {
+                //                 "route": {
+                //                     "loading": {
+                //                         "dates": {
+                //                             "type": routeLoadingDatesTypeValue
+                //                         },
+                //                         "cargos": [
+                //                             {
+                //                                 "name": cargoNameValue,
+                //                                 "weight": {
+                //                                     "quantity": cargoQuantityValue,
+                //                                     "type": cargoUnitsValue
+                //                                 },
+                //                                 "id": cargoInnerIdValue
+                //                             }
+                //                         ],
+                //                         "location": {
+                //                             "type": routeLoadingTypeValue,
+                //                             "city_id": routeLoadingCityIdValue,
+                //                             "address": routeLoadingAddressValue
+                //                         }
+                //                     },
+                //                     "unloading": {
+                //                         "location": {
+                //                             "type": routeUnloadingTypeValue,
+                //                             "city_id": routeUnloadingCityIdValue,
+                //                             "address": routeUnloadingAddressValue
+                //                         }
+                //                     }
+                //                 },
+                //                 "truck": {
+                //                     "load_type": transportLoadingUnloadingTypeCommonValue,
+                //                     "body_types": [
+                //                         transportTypeValue
+                //                     ],
+                //                     "body_loading": {
+                //                         "types": [
+                //                             transportLoadingUnloadingTypeExactValue
+                //                         ]
+                //                     },
+                //                     "body_unloading": {
+                //                         "types": [
+                //                             transportLoadingUnloadingTypeExactValue
+                //                         ]
+                //                     }
+                //                 },
+                //                 "payment": {
+                //                     "type": paymentTypeValue,
+                //                     "currency_type": paymentCurrencyTypeValue,
+                //                     "rate_with_vat": paymentWithVatValue,
+                //                     "rate_without_vat": paymentWithoutVatValue
+                //                 },
+                //                 "contacts": [
+                //                     contactsIdValue
+                //                 ]
+                //             }
+                //         }
+                //     )
+                // }).then(response => {
+                //     if (response.status === 200) {
+                //         alert('Груз успешно создан в ATI')
+                //     }
+                // })
 
                 // $.ajax({
                 //     url: 'https://proxy.cors.sh/https://api.ati.su/v2/cargos',
@@ -220,7 +221,6 @@ function getValue(inputId) {
         input_id: inputId,
         type: 'custom'
     }).then((data) => {
-        console.log(data);
         value = data.value;
     }).catch((e) => {
             console.log(e);
