@@ -100,6 +100,8 @@ function createCargo() {
             }
         }
     })
+    console.log('оплата');
+    console.log(paymentWithVatFieldId);
 
 
     $.ajax({
