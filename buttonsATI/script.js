@@ -119,7 +119,7 @@ function createCargo() {
                 let paymentWithVatValue= getValue(paymentWithVatFieldId)
                 let paymentWithoutVatValue= getValue(paymentWithoutVatFieldId)
                 let contactsIdValue= getValue(contactsIdFieldId)
-                console.log('contact' + contactsIdValue)
+                console.log('contactNew' + contactsIdValue)
 
 
                 // fetch('https://proxy.cors.sh/https://api.ati.su/v2/cargos', {
