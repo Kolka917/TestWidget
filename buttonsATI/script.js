@@ -216,9 +216,11 @@ function createCargo() {
 
 }
 
-function getValue(inputId) {
-    return window.EnvyCrmWidget.getDealValue({
+async function getValue(inputId) {
+    const value = await window.EnvyCrmWidget.getDealValue({
         input_id: inputId,
-        type: 'custom'})
-        .then((data) => console.log(data))
+        type: 'custom'
+    })
+    console.log(value)
+    return value
 }
