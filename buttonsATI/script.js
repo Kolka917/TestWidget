@@ -186,10 +186,8 @@ function getValue(inputId) {
         input_id: inputId,
         type: 'custom'
     }).then((data) => {
-        console.log(data);
         return data;
-    })
-        .catch((e) => {
+    }).catch((e) => {
             console.log(e);
         });
 }
