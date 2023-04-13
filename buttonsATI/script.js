@@ -102,6 +102,7 @@ function createCargo() {
     })
     console.log('оплата');
     console.log(paymentWithVatFieldId);
+    console.log(routeLoadingCityIdFieldId);
 
 
     $.ajax({
