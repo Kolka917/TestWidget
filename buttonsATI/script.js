@@ -220,8 +220,5 @@ function getValue(inputId) {
     return window.EnvyCrmWidget.getDealValue({
         input_id: inputId,
         type: 'custom'})
-        .then((data) => data.json())
-        .then((data) => {
-            return data.value
-        })
+        .then((data) => console.log(data))
 }
