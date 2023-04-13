@@ -32,6 +32,7 @@ function createCargo() {
         },
         contentType: 'application/json',
         type: 'GET',
+        async: false,
         success: function (data, status) {
             if (status === "success") {
                 Array.prototype.forEach.call(data.result, d => {
