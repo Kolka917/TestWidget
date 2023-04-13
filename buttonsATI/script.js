@@ -1,37 +1,28 @@
-document.querySelector("#myButton").addEventListener("click", function() {
+document.querySelector("#myButton").addEventListener("click", function () {
     createCargo();
 }, false);
 
 function createCargo() {
-    var w = window.EnvyCrmWidget
-    w.getDealValues()
-        .then((data) => {
-            console.log(data);
-        })
-        .catch((e) => {
-            console.log(e);
-        });
 
-    let cargoName
-    let cargoQuantity
-    let cargoUnits
-    let cargoInnerId
-    let routeLoadingType
-    let routeLoadingCityIdFieldIf
-    let routeLoadingAddress
-    let routeLoadingDatesType
-    let routeUnloadingType
+    let cargoNameFieldId
+    let cargoQuantityFieldId
+    let cargoUnitsFieldId
+    let cargoInnerIdFieldId
+    let routeLoadingTypeFieldId
+    let routeLoadingCityIdFieldId
+    let routeLoadingAddressFieldId
+    let routeLoadingDatesTypeFieldId
+    let routeUnloadingTypeFieldId
     let routeUnloadingCityIdFieldId
-    let routeUnloadingAddress
-    let transportLoadingUnloadingTypeCommon
-    let transportLoadingUnloadingTypeExact
-    let transportType
-    let paymentType
-    let paymentCurrencyType
-    let paymentWithVat
-    let paymentWithoutVat
-    let contactsId
-
+    let routeUnloadingAddressFieldId
+    let transportLoadingUnloadingTypeCommonFieldId
+    let transportLoadingUnloadingTypeExactFieldId
+    let transportTypeFieldId
+    let paymentTypeFieldId
+    let paymentCurrencyTypeFieldId
+    let paymentWithVatFieldId
+    let paymentWithoutVatFieldId
+    let contactsIdFieldId
 
 
     $.get({
@@ -44,116 +35,158 @@ function createCargo() {
         success: function (data, status) {
             if (status === "success") {
                 Array.prototype.forEach.call(data.result, d => {
-                    switch(d.name) {
+                    switch (d.name) {
                         case ('Маршрут. Разгрузка. id города из словаря'):
                             routeUnloadingCityIdFieldId = d.id;
                             break;
                         case ('Маршрут.Загрузка.Расположение. id Города из словаря'):
-                            routeLoadingCityIdFieldIf = d.id;
+                            routeLoadingCityIdFieldId = d.id;
+                            break;
+                        case ('Маршрут.Загрузка.Расположение.Тип расположения точки'):
+                            routeLoadingTypeFieldId = d.id;
+                            break;
+                        case ('Маршрут. Загрузка. Адрес'):
+                            routeLoadingAddressFieldId = d.id;
+                            break;
+                        case ('Маршрут. Загрузка. Дата загрузки. Тип.'):
+                            routeLoadingDatesTypeFieldId = d.id;
+                            break;
+                        case ('Маршрут.Загрузка.Параметры груза. id груза в списке'):
+                            cargoInnerIdFieldId = d.id;
+                            break;
+                        case ('Маршрут.Загрузка.Параметры груза. Наименование груза'):
+                            cargoNameFieldId = d.id;
+                            break;
+                        case ('Маршрут.Загрузка.Параметры груза.Вес. Количество'):
+                            cargoQuantityFieldId = d.id;
+                            break;
+                        case ('Маршрут.Загрузка.Параметры груза.Вес. Единицы'):
+                            cargoUnitsFieldId = d.id;
+                            break;
+                        case ('Маршрут. Разгрузка. Локация.Тип расположения точки'):
+                            routeUnloadingTypeFieldId = d.id;
+                            break;
+                        case ('Маршрут.Разгрузка.Адрес'):
+                            routeUnloadingAddressFieldId = d.id;
+                            break;
+                        case ('Транспорт.Тип загрузки-выгрузки'):
+                            transportLoadingUnloadingTypeCommonFieldId = d.id;
+                            break;
+                        case ('Транспорт.Тип кузова id из словаря'):
+                            transportTypeFieldId = d.id;
+                            break;
+                        case ('Оплата. Тип оплаты'):
+                            paymentTypeFieldId = d.id;
+                            break;
+                        case ('Оплата. id валюты из словаря'):
+                            paymentCurrencyTypeFieldId = d.id;
+                            break;
+                        case ('Оплата. Ставка безнал с НДС'):
+                            paymentWithVatFieldId = d.id;
+                            break;
+                        case ('Оплата.Ставка безнал без НДС'):
+                            paymentWithoutVatFieldId = d.id;
+                            break;
+                        case ('Контакты. id контактов заявки'):
+                            contactsIdFieldId = d.id;
+                            break;
+                        case ('Тип загрузки и выгрузки. id из словаря'):
+                            transportLoadingUnloadingTypeExactFieldId = d.id;
                             break;
                         default:
                         // code block
                     }
                 })
-
-                w.getDealValue({
-                    input_id: routeLoadingCityIdFieldIf,
-                    type: 'custom'
-                })
-                    .then((data) => {
-                        console.log(data);
-                    })
-                    .catch((e) => {
-                        console.log(e);
-                    });
-
-                w.getDealValue({
-                    input_id: routeUnloadingCityIdFieldId,
-                    type: 'custom'
-                })
-                    .then((data) => {
-                        console.log(data);
-                    })
-                    .catch((e) => {
-                        console.log(e);
-                    });
             }
         }
     })
 
 
+    $.ajax({
+        url: 'https://proxy.cors.sh/https://api.ati.su/v2/cargos',
+        headers: {
+            'x-cors-api-key': 'temp_96f3dd2cacb5a4a98c8728b253decd48',
+            'Authorization': 'Bearer 6143fe5dba704e469631712649f99a7a'
+        },
+        method: 'POST',
+        dataType: 'json',
+        data: JSON.stringify(
+            {
+                "cargo_application": {
+                    "route": {
+                        "loading": {
+                            "dates": {
+                                "type": getValue(routeLoadingDatesTypeFieldId)
+                            },
+                            "cargos": [
+                                {
+                                    "name": getValue(cargoNameFieldId),
+                                    "weight": {
+                                        "quantity": getValue(cargoQuantityFieldId),
+                                        "type": getValue(cargoUnitsFieldId)
+                                    },
+                                    "id": getValue(cargoInnerIdFieldId)
+                                }
+                            ],
+                            "location": {
+                                "type": getValue(routeLoadingTypeFieldId),
+                                "city_id": getValue(routeLoadingCityIdFieldId),
+                                "address": getValue(routeLoadingAddressFieldId)
+                            }
+                        },
+                        "unloading": {
+                            "location": {
+                                "type": getValue(routeUnloadingTypeFieldId),
+                                "city_id": getValue(routeUnloadingCityIdFieldId),
+                                "address": getValue(routeUnloadingAddressFieldId)
+                            }
+                        }
+                    },
+                    "truck": {
+                        "load_type": getValue(transportLoadingUnloadingTypeCommonFieldId),
+                        "body_types": [
+                            getValue(transportTypeFieldId)
+                        ],
+                        "body_loading": {
+                            "types": [
+                                getValue(transportLoadingUnloadingTypeExactFieldId)
+                            ]
+                        },
+                        "body_unloading": {
+                            "types": [
+                                getValue(transportLoadingUnloadingTypeExactFieldId)
+                            ]
+                        }
+                    },
+                    "payment": {
+                        "type": getValue(paymentTypeFieldId),
+                        "currency_type": getValue(paymentCurrencyTypeFieldId),
+                        "rate_with_vat": getValue(paymentWithVatFieldId),
+                        "rate_without_vat": getValue(paymentWithoutVatFieldId)
+                    },
+                    "contacts": [
+                        getValue(contactsIdFieldId)
+                    ]
+                }
+            }
+        ),
+        success: function (data) {
+            console.log('succes: ' + data);
+            alert('Груз успешно создан в ATI')
+        }
+    });
+}
 
-    // $.ajax({
-    //     url: 'https://proxy.cors.sh/https://api.ati.su/v2/cargos',
-    //     headers: {
-    //         'x-cors-api-key': 'temp_96f3dd2cacb5a4a98c8728b253decd48',
-    //         'Authorization': 'Bearer 6143fe5dba704e469631712649f99a7a'
-    //     },
-    //     method: 'POST',
-    //     dataType: 'json',
-    //     data: JSON.stringify(
-    //         {
-    //             "cargo_application": {
-    //                 "route": {
-    //                     "loading": {
-    //                         "dates": {
-    //                             "type": routeLoadingDatesType
-    //                         },
-    //                         "cargos": [
-    //                             {
-    //                                 "name": cargoName,
-    //                                 "weight": {
-    //                                     "quantity": cargoQuantity,
-    //                                     "type": cargoUnits
-    //                                 },
-    //                                 "id": cargoInnerId
-    //                             }
-    //                         ],
-    //                         "location": {
-    //                             "type": routeLoadingType,
-    //                             "city_id": routeLoadingCityId,
-    //                             "address": routeLoadingAddress
-    //                         }
-    //                     },
-    //                     "unloading": {
-    //                         "location": {
-    //                             "type": routeUnloadingType,
-    //                             "city_id": routeUnloadingCityId,
-    //                             "address": routeUnloadingAddress
-    //                         }
-    //                     }
-    //                 },
-    //                 "truck": {
-    //                     "load_type": transportLoadingUnloadingTypeCommon,
-    //                     "body_types": [
-    //                         transportType
-    //                     ],
-    //                     "body_loading": {
-    //                         "types": [
-    //                             transportLoadingUnloadingTypeExact
-    //                         ]
-    //                     },
-    //                     "body_unloading": {
-    //                         "types": [
-    //                             transportLoadingUnloadingTypeExact
-    //                         ]
-    //                     }
-    //                 },
-    //                 "payment": {
-    //                     "type": paymentType,
-    //                     "currency_type": paymentCurrencyType,
-    //                     "rate_with_vat": paymentWithVat,
-    //                     "rate_without_vat": paymentWithoutVat
-    //                 },
-    //                 "contacts": [
-    //                     contactsId
-    //                 ]
-    //             }
-    //         }
-    //         ),
-    //     success: function(data){
-    //         console.log('succes: '+data);
-    //         alert('Соответствующее поле в сделке успешно обновлено')
-    //     }
-    // });
+function getValue(inputId) {
+    var w = window.EnvyCrmWidget;
+    w.getDealValue({
+        input_id: inputId,
+        type: 'custom'
+    }).then((data) => {
+        console.log(data);
+        return data;
+    })
+        .catch((e) => {
+            console.log(e);
+        });
 }
