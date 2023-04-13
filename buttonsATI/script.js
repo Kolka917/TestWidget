@@ -194,9 +194,16 @@ function createCargo() {
 }
 
 function getValue(inputId) {
-    var w = window.EnvyCrmWidget;
-    return w.getDealValue({
+    let value;
+    window.EnvyCrmWidget.getDealValue({
         input_id: inputId,
         type: 'custom'
-    })
+    }).then((data) => {
+        console.log(data);
+        value = data.value;
+        alert('Тип загрузки и выгрузки успешно обновлен')
+    }).catch((e) => {
+            console.log(e);
+        });
+    return value;
 }
