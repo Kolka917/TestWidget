@@ -99,6 +99,27 @@ function createCargo() {
                 })
 
 
+                let cargoNameValue = getValue(cargoNameFieldId)
+                let cargoQuantityValue= getValue(cargoQuantityFieldId)
+                let cargoUnitsValue= getValue(cargoUnitsFieldId)
+                let cargoInnerIdValue= getValue(cargoInnerIdFieldId)
+                let routeLoadingTypeValue= getValue(routeLoadingTypeFieldId)
+                let routeLoadingCityIdValue= getValue(routeLoadingCityIdFieldId)
+                let routeLoadingAddressValue= getValue(routeLoadingAddressFieldId)
+                let routeLoadingDatesTypeValue= getValue(routeLoadingDatesTypeFieldId)
+                let routeUnloadingTypeValue= getValue(routeUnloadingTypeFieldId)
+                let routeUnloadingCityIdValue= getValue(routeUnloadingCityIdFieldId)
+                let routeUnloadingAddressValue= getValue(routeUnloadingAddressFieldId)
+                let transportLoadingUnloadingTypeCommonValue= getValue(transportLoadingUnloadingTypeCommonFieldId)
+                let transportLoadingUnloadingTypeExactValue= getValue(transportLoadingUnloadingTypeExactFieldId)
+                let transportTypeValue= getValue(transportTypeFieldId)
+                let paymentTypeValue= getValue(paymentTypeFieldId)
+                let paymentCurrencyTypeValue= getValue(paymentCurrencyTypeFieldId)
+                let paymentWithVatValue= getValue(paymentWithVatFieldId)
+                let paymentWithoutVatValue= getValue(paymentWithoutVatFieldId)
+                let contactsIdValue= getValue(contactsIdFieldId)
+
+
                 fetch('https://proxy.cors.sh/https://api.ati.su/v2/cargos', {
                     method: 'POST',
                     headers: {
@@ -111,56 +132,56 @@ function createCargo() {
                                 "route": {
                                     "loading": {
                                         "dates": {
-                                            "type": getValue(routeLoadingDatesTypeFieldId)
+                                            "type": routeLoadingDatesTypeValue
                                         },
                                         "cargos": [
                                             {
-                                                "name": getValue(cargoNameFieldId),
+                                                "name": cargoNameValue,
                                                 "weight": {
-                                                    "quantity": getValue(cargoQuantityFieldId),
-                                                    "type": getValue(cargoUnitsFieldId)
+                                                    "quantity": cargoQuantityValue,
+                                                    "type": cargoUnitsValue
                                                 },
-                                                "id": getValue(cargoInnerIdFieldId)
+                                                "id": cargoInnerIdValue
                                             }
                                         ],
                                         "location": {
-                                            "type": getValue(routeLoadingTypeFieldId),
-                                            "city_id": getValue(routeLoadingCityIdFieldId),
-                                            "address": getValue(routeLoadingAddressFieldId)
+                                            "type": routeLoadingTypeValue,
+                                            "city_id": routeLoadingCityIdValue,
+                                            "address": routeLoadingAddressValue
                                         }
                                     },
                                     "unloading": {
                                         "location": {
-                                            "type": getValue(routeUnloadingTypeFieldId),
-                                            "city_id": getValue(routeUnloadingCityIdFieldId),
-                                            "address": getValue(routeUnloadingAddressFieldId)
+                                            "type": routeUnloadingTypeValue,
+                                            "city_id": routeUnloadingCityIdValue,
+                                            "address": routeUnloadingAddressValue
                                         }
                                     }
                                 },
                                 "truck": {
-                                    "load_type": getValue(transportLoadingUnloadingTypeCommonFieldId),
+                                    "load_type": transportLoadingUnloadingTypeCommonValue,
                                     "body_types": [
-                                        getValue(transportTypeFieldId)
+                                        transportTypeValue
                                     ],
                                     "body_loading": {
                                         "types": [
-                                            getValue(transportLoadingUnloadingTypeExactFieldId)
+                                            transportLoadingUnloadingTypeExactValue
                                         ]
                                     },
                                     "body_unloading": {
                                         "types": [
-                                            getValue(transportLoadingUnloadingTypeExactFieldId)
+                                            transportLoadingUnloadingTypeExactValue
                                         ]
                                     }
                                 },
                                 "payment": {
-                                    "type": getValue(paymentTypeFieldId),
-                                    "currency_type": getValue(paymentCurrencyTypeFieldId),
-                                    "rate_with_vat": getValue(paymentWithVatFieldId),
-                                    "rate_without_vat": getValue(paymentWithoutVatFieldId)
+                                    "type": paymentTypeValue,
+                                    "currency_type": paymentCurrencyTypeValue,
+                                    "rate_with_vat": paymentWithVatValue,
+                                    "rate_without_vat": paymentWithoutVatValue
                                 },
                                 "contacts": [
-                                    getValue(contactsIdFieldId)
+                                    contactsIdValue
                                 ]
                             }
                         }
@@ -201,7 +222,6 @@ function getValue(inputId) {
     }).then((data) => {
         console.log(data);
         value = data.value;
-        alert('Тип загрузки и выгрузки успешно обновлен')
     }).catch((e) => {
             console.log(e);
         });
