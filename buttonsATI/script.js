@@ -96,88 +96,88 @@ function createCargo() {
                         default:
                         // code block
                     }
+
+
+                    $.ajax({
+                        url: 'https://proxy.cors.sh/https://api.ati.su/v2/cargos',
+                        headers: {
+                            'x-cors-api-key': 'temp_96f3dd2cacb5a4a98c8728b253decd48',
+                            'Authorization': 'Bearer 6143fe5dba704e469631712649f99a7a'
+                        },
+                        method: 'POST',
+                        dataType: 'json',
+                        data: JSON.stringify(
+                            {
+                                "cargo_application": {
+                                    "route": {
+                                        "loading": {
+                                            "dates": {
+                                                "type": getValue(routeLoadingDatesTypeFieldId)
+                                            },
+                                            "cargos": [
+                                                {
+                                                    "name": getValue(cargoNameFieldId),
+                                                    "weight": {
+                                                        "quantity": getValue(cargoQuantityFieldId),
+                                                        "type": getValue(cargoUnitsFieldId)
+                                                    },
+                                                    "id": getValue(cargoInnerIdFieldId)
+                                                }
+                                            ],
+                                            "location": {
+                                                "type": getValue(routeLoadingTypeFieldId),
+                                                "city_id": getValue(routeLoadingCityIdFieldId),
+                                                "address": getValue(routeLoadingAddressFieldId)
+                                            }
+                                        },
+                                        "unloading": {
+                                            "location": {
+                                                "type": getValue(routeUnloadingTypeFieldId),
+                                                "city_id": getValue(routeUnloadingCityIdFieldId),
+                                                "address": getValue(routeUnloadingAddressFieldId)
+                                            }
+                                        }
+                                    },
+                                    "truck": {
+                                        "load_type": getValue(transportLoadingUnloadingTypeCommonFieldId),
+                                        "body_types": [
+                                            getValue(transportTypeFieldId)
+                                        ],
+                                        "body_loading": {
+                                            "types": [
+                                                getValue(transportLoadingUnloadingTypeExactFieldId)
+                                            ]
+                                        },
+                                        "body_unloading": {
+                                            "types": [
+                                                getValue(transportLoadingUnloadingTypeExactFieldId)
+                                            ]
+                                        }
+                                    },
+                                    "payment": {
+                                        "type": getValue(paymentTypeFieldId),
+                                        "currency_type": getValue(paymentCurrencyTypeFieldId),
+                                        "rate_with_vat": getValue(paymentWithVatFieldId),
+                                        "rate_without_vat": getValue(paymentWithoutVatFieldId)
+                                    },
+                                    "contacts": [
+                                        getValue(contactsIdFieldId)
+                                    ]
+                                }
+                            }
+                        ),
+                        success: function (dataCreate) {
+                            console.log('succes: ' + dataCreate);
+                            alert('Груз успешно создан в ATI')
+                        }
+                    });
+
+
                 })
             }
         }
     })
-    console.log('оплата');
-    console.log(paymentWithVatFieldId);
-    console.log(routeLoadingCityIdFieldId);
 
-
-    $.ajax({
-        url: 'https://proxy.cors.sh/https://api.ati.su/v2/cargos',
-        headers: {
-            'x-cors-api-key': 'temp_96f3dd2cacb5a4a98c8728b253decd48',
-            'Authorization': 'Bearer 6143fe5dba704e469631712649f99a7a'
-        },
-        method: 'POST',
-        dataType: 'json',
-        data: JSON.stringify(
-            {
-                "cargo_application": {
-                    "route": {
-                        "loading": {
-                            "dates": {
-                                "type": getValue(routeLoadingDatesTypeFieldId)
-                            },
-                            "cargos": [
-                                {
-                                    "name": getValue(cargoNameFieldId),
-                                    "weight": {
-                                        "quantity": getValue(cargoQuantityFieldId),
-                                        "type": getValue(cargoUnitsFieldId)
-                                    },
-                                    "id": getValue(cargoInnerIdFieldId)
-                                }
-                            ],
-                            "location": {
-                                "type": getValue(routeLoadingTypeFieldId),
-                                "city_id": getValue(routeLoadingCityIdFieldId),
-                                "address": getValue(routeLoadingAddressFieldId)
-                            }
-                        },
-                        "unloading": {
-                            "location": {
-                                "type": getValue(routeUnloadingTypeFieldId),
-                                "city_id": getValue(routeUnloadingCityIdFieldId),
-                                "address": getValue(routeUnloadingAddressFieldId)
-                            }
-                        }
-                    },
-                    "truck": {
-                        "load_type": getValue(transportLoadingUnloadingTypeCommonFieldId),
-                        "body_types": [
-                            getValue(transportTypeFieldId)
-                        ],
-                        "body_loading": {
-                            "types": [
-                                getValue(transportLoadingUnloadingTypeExactFieldId)
-                            ]
-                        },
-                        "body_unloading": {
-                            "types": [
-                                getValue(transportLoadingUnloadingTypeExactFieldId)
-                            ]
-                        }
-                    },
-                    "payment": {
-                        "type": getValue(paymentTypeFieldId),
-                        "currency_type": getValue(paymentCurrencyTypeFieldId),
-                        "rate_with_vat": getValue(paymentWithVatFieldId),
-                        "rate_without_vat": getValue(paymentWithoutVatFieldId)
-                    },
-                    "contacts": [
-                        getValue(contactsIdFieldId)
-                    ]
-                }
-            }
-        ),
-        success: function (data) {
-            console.log('succes: ' + data);
-            alert('Груз успешно создан в ATI')
-        }
-    });
 }
 
 function getValue(inputId) {
