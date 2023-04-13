@@ -33,7 +33,7 @@ function createCargo() {
         contentType: 'application/json',
         type: 'GET',
         async: false,
-        success: function (data, status) {
+        success: async function (data, status) {
             if (status === "success") {
                 Array.prototype.forEach.call(data.result, d => {
                     switch (d.name) {
@@ -118,7 +118,7 @@ function createCargo() {
                 let paymentCurrencyTypeValue = getValue(paymentCurrencyTypeFieldId)
                 let paymentWithVatValue = getValue(paymentWithVatFieldId)
                 let paymentWithoutVatValue = getValue(paymentWithoutVatFieldId)
-                let contactsIdValue = getValue(contactsIdFieldId)
+                let contactsIdValue = await getValue(contactsIdFieldId)
                 console.log('contactIdValue' + contactsIdValue)
 
 
