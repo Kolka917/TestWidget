@@ -217,13 +217,13 @@ function createCargo() {
 }
 
 function getValue(inputId) {
-    return window.EnvyCrmWidget.getDealValue({
+    const value = window.EnvyCrmWidget.getDealValue({
         input_id: inputId,
         type: 'custom'
     }).then((data) => {
         console.log(data.value)
         return data.value;
-    }).catch((e) => {
-            console.log(e);
-        });
+    })
+
+    return Promise.resolve(value);
 }
