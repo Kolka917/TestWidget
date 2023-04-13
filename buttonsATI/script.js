@@ -221,6 +221,5 @@ async function getValue(inputId) {
         input_id: inputId,
         type: 'custom'
     })
-    const result = await  response.json()
-    return result.value;
+    return response.value;
 }
