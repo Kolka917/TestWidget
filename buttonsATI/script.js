@@ -223,7 +223,7 @@ function getValue(inputId) {
         type: 'custom'
     }).then((data) => {
         console.log(data.value)
-        value = data.value;
+        value = data.value.valueAsString;
     }).catch((e) => {
             console.log(e);
         });
