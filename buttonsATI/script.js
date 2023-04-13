@@ -100,99 +100,98 @@ function createCargo() {
                 })
 
 
-                let cargoNameValue = getValue(cargoNameFieldId)
-                let cargoQuantityValue = getValue(cargoQuantityFieldId)
-                let cargoUnitsValue = getValue(cargoUnitsFieldId)
-                let cargoInnerIdValue = getValue(cargoInnerIdFieldId)
-                let routeLoadingTypeValue = getValue(routeLoadingTypeFieldId)
-                let routeLoadingCityIdValue = getValue(routeLoadingCityIdFieldId)
-                let routeLoadingAddressValue = getValue(routeLoadingAddressFieldId)
-                let routeLoadingDatesTypeValue = getValue(routeLoadingDatesTypeFieldId)
-                let routeUnloadingTypeValue = getValue(routeUnloadingTypeFieldId)
-                let routeUnloadingCityIdValue = getValue(routeUnloadingCityIdFieldId)
-                let routeUnloadingAddressValue = getValue(routeUnloadingAddressFieldId)
-                let transportLoadingUnloadingTypeCommonValue = getValue(transportLoadingUnloadingTypeCommonFieldId)
-                let transportLoadingUnloadingTypeExactValue = getValue(transportLoadingUnloadingTypeExactFieldId)
-                let transportTypeValue = getValue(transportTypeFieldId)
-                let paymentTypeValue = getValue(paymentTypeFieldId)
-                let paymentCurrencyTypeValue = getValue(paymentCurrencyTypeFieldId)
-                let paymentWithVatValue = getValue(paymentWithVatFieldId)
-                let paymentWithoutVatValue = getValue(paymentWithoutVatFieldId)
+                let cargoNameValue = await getValue(cargoNameFieldId)
+                let cargoQuantityValue = await getValue(cargoQuantityFieldId)
+                let cargoUnitsValue = await getValue(cargoUnitsFieldId)
+                let cargoInnerIdValue = await getValue(cargoInnerIdFieldId)
+                let routeLoadingTypeValue = await getValue(routeLoadingTypeFieldId)
+                let routeLoadingCityIdValue = await getValue(routeLoadingCityIdFieldId)
+                let routeLoadingAddressValue = await getValue(routeLoadingAddressFieldId)
+                let routeLoadingDatesTypeValue = await getValue(routeLoadingDatesTypeFieldId)
+                let routeUnloadingTypeValue = await getValue(routeUnloadingTypeFieldId)
+                let routeUnloadingCityIdValue = await getValue(routeUnloadingCityIdFieldId)
+                let routeUnloadingAddressValue = await getValue(routeUnloadingAddressFieldId)
+                let transportLoadingUnloadingTypeCommonValue = await getValue(transportLoadingUnloadingTypeCommonFieldId)
+                let transportLoadingUnloadingTypeExactValue = await getValue(transportLoadingUnloadingTypeExactFieldId)
+                let transportTypeValue = await getValue(transportTypeFieldId)
+                let paymentTypeValue = await getValue(paymentTypeFieldId)
+                let paymentCurrencyTypeValue = await getValue(paymentCurrencyTypeFieldId)
+                let paymentWithVatValue = await getValue(paymentWithVatFieldId)
+                let paymentWithoutVatValue = await getValue(paymentWithoutVatFieldId)
                 let contactsIdValue = await getValue(contactsIdFieldId)
-                console.log('contactIdValue' + contactsIdValue)
 
 
-                // fetch('https://proxy.cors.sh/https://api.ati.su/v2/cargos', {
-                //     method: 'POST',
-                //     headers: {
-                //         'x-cors-api-key': 'temp_96f3dd2cacb5a4a98c8728b253decd48',
-                //         'Authorization': 'Bearer 6143fe5dba704e469631712649f99a7a'
-                //     },
-                //     body: JSON.stringify(
-                //         {
-                //             "cargo_application": {
-                //                 "route": {
-                //                     "loading": {
-                //                         "dates": {
-                //                             "type": routeLoadingDatesTypeValue
-                //                         },
-                //                         "cargos": [
-                //                             {
-                //                                 "name": cargoNameValue,
-                //                                 "weight": {
-                //                                     "quantity": cargoQuantityValue,
-                //                                     "type": cargoUnitsValue
-                //                                 },
-                //                                 "id": cargoInnerIdValue
-                //                             }
-                //                         ],
-                //                         "location": {
-                //                             "type": routeLoadingTypeValue,
-                //                             "city_id": routeLoadingCityIdValue,
-                //                             "address": routeLoadingAddressValue
-                //                         }
-                //                     },
-                //                     "unloading": {
-                //                         "location": {
-                //                             "type": routeUnloadingTypeValue,
-                //                             "city_id": routeUnloadingCityIdValue,
-                //                             "address": routeUnloadingAddressValue
-                //                         }
-                //                     }
-                //                 },
-                //                 "truck": {
-                //                     "load_type": transportLoadingUnloadingTypeCommonValue,
-                //                     "body_types": [
-                //                         transportTypeValue
-                //                     ],
-                //                     "body_loading": {
-                //                         "types": [
-                //                             transportLoadingUnloadingTypeExactValue
-                //                         ]
-                //                     },
-                //                     "body_unloading": {
-                //                         "types": [
-                //                             transportLoadingUnloadingTypeExactValue
-                //                         ]
-                //                     }
-                //                 },
-                //                 "payment": {
-                //                     "type": paymentTypeValue,
-                //                     "currency_type": paymentCurrencyTypeValue,
-                //                     "rate_with_vat": paymentWithVatValue,
-                //                     "rate_without_vat": paymentWithoutVatValue
-                //                 },
-                //                 "contacts": [
-                //                     contactsIdValue
-                //                 ]
-                //             }
-                //         }
-                //     )
-                // }).then(response => {
-                //     if (response.status === 200) {
-                //         alert('Груз успешно создан в ATI')
-                //     }
-                // })
+                fetch('https://proxy.cors.sh/https://api.ati.su/v2/cargos', {
+                    method: 'POST',
+                    headers: {
+                        'x-cors-api-key': 'temp_96f3dd2cacb5a4a98c8728b253decd48',
+                        'Authorization': 'Bearer 6143fe5dba704e469631712649f99a7a'
+                    },
+                    body: JSON.stringify(
+                        {
+                            "cargo_application": {
+                                "route": {
+                                    "loading": {
+                                        "dates": {
+                                            "type": routeLoadingDatesTypeValue
+                                        },
+                                        "cargos": [
+                                            {
+                                                "name": cargoNameValue,
+                                                "weight": {
+                                                    "quantity": cargoQuantityValue,
+                                                    "type": cargoUnitsValue
+                                                },
+                                                "id": cargoInnerIdValue
+                                            }
+                                        ],
+                                        "location": {
+                                            "type": routeLoadingTypeValue,
+                                            "city_id": routeLoadingCityIdValue,
+                                            "address": routeLoadingAddressValue
+                                        }
+                                    },
+                                    "unloading": {
+                                        "location": {
+                                            "type": routeUnloadingTypeValue,
+                                            "city_id": routeUnloadingCityIdValue,
+                                            "address": routeUnloadingAddressValue
+                                        }
+                                    }
+                                },
+                                "truck": {
+                                    "load_type": transportLoadingUnloadingTypeCommonValue,
+                                    "body_types": [
+                                        transportTypeValue
+                                    ],
+                                    "body_loading": {
+                                        "types": [
+                                            transportLoadingUnloadingTypeExactValue
+                                        ]
+                                    },
+                                    "body_unloading": {
+                                        "types": [
+                                            transportLoadingUnloadingTypeExactValue
+                                        ]
+                                    }
+                                },
+                                "payment": {
+                                    "type": paymentTypeValue,
+                                    "currency_type": paymentCurrencyTypeValue,
+                                    "rate_with_vat": paymentWithVatValue,
+                                    "rate_without_vat": paymentWithoutVatValue
+                                },
+                                "contacts": [
+                                    contactsIdValue
+                                ]
+                            }
+                        }
+                    )
+                }).then(response => {
+                    if (response.status === 200) {
+                        alert('Груз успешно создан в ATI')
+                    }
+                })
 
                 // $.ajax({
                 //     url: 'https://proxy.cors.sh/https://api.ati.su/v2/cargos',
