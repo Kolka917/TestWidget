@@ -12,6 +12,7 @@ document.querySelector("#myButtonEdit").addEventListener("click", function () {
 
 function createCargo() {
 
+    let cargoATIIdFieldId
     let cargoNameFieldId
     let cargoQuantityFieldId
     let cargoUnitsFieldId
@@ -102,6 +103,9 @@ function createCargo() {
                             break;
                         case ('Тип загрузки и выгрузки. id из словаря'):
                             transportLoadingUnloadingTypeExactFieldId = d.id;
+                            break;
+                        case ('Идентификатор груза в ATI'):
+                            cargoATIIdFieldId = d.id;
                             break;
                         default:
                         // code block
@@ -203,15 +207,18 @@ function createCargo() {
                         if (obj.status === 200) {
                             alert('Груз успешно создан в ATI')
                         }
+                        window.EnvyCrmWidget.changeDealValue({
+                            input_id: cargoATIIdFieldId,
+                            value: obj.body.cargo_application.cargo_id
+                        })
+                            .then((r) => {
+                                console.log(r);
+                                alert('Идентификатор созданного груза успешно добавлен в сделку')
+                            })
+                            .catch((e) => {
+                                console.log(e);
+                            });
                     })
-
-                    // .then(response => response.json())
-                    // .then(response => {
-                    //     if (response.status === 200) {
-                    //         alert('Груз успешно создан в ATI')
-                    //     }
-                    //     console.log(response.result)
-                    // })
             }
         }
     })
