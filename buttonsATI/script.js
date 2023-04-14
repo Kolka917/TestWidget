@@ -197,7 +197,7 @@ function createCargo() {
                         }
                     )
                 }).then(response => {
-                    console.log(response)
+                    console.log(response.json())
                     if (response.status === 200) {
                         alert('Груз успешно создан в ATI')
                     }
