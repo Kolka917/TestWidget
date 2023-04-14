@@ -43,6 +43,7 @@ function createCargo() {
         async: false,
         success: async function (data, status) {
             if (status === "success") {
+                console.log(data.result)
                 Array.prototype.forEach.call(data.result, d => {
                     switch (d.name) {
                         case ('Маршрут. Разгрузка. id города из словаря'):
