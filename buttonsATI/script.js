@@ -197,15 +197,13 @@ function createCargo() {
                             }
                         }
                     )
-                }).then(response => {
-                    if (response.status === 200) {
-                        alert('Груз успешно создан в ATI')
-                    }
-                    response.json()
-                }).then((response) => {
-                    console.log(response)
-                })
-
+                }).then(response => response.json())
+                    .then(response => {
+                        if (response.status === 200) {
+                            alert('Груз успешно создан в ATI')
+                        }
+                        console.log(response.result)
+                    })
             }
         }
     })
