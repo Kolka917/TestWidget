@@ -134,6 +134,9 @@ function createCargo() {
                 let contactsIdValue = await getValue(contactsIdFieldId)
 
 
+
+                console.log('checkArray')
+
                 fetch('https://proxy.cors.sh/https://api.ati.su/v2/cargos', {
                     method: 'POST',
                     headers: {
@@ -440,14 +443,12 @@ function editCargo() {
                                         transportTypeValue
                                     ],
                                     "body_loading": {
-                                        "types": [
-                                            transportLoadingUnloadingTypeExactValue
-                                        ]
+                                        "types":
+                                            transportLoadingUnloadingTypeExactValue.split(", ")
                                     },
                                     "body_unloading": {
-                                        "types": [
-                                            transportLoadingUnloadingTypeExactValue
-                                        ]
+                                        "types":
+                                            transportLoadingUnloadingTypeExactValue.split(", ")
                                     }
                                 },
                                 "payment": {
