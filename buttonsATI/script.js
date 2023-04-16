@@ -180,12 +180,12 @@ function createCargo() {
                                     ],
                                     "body_loading": {
                                         "types": [
-                                            transportLoadingUnloadingTypeExactValue
+                                            transportLoadingUnloadingTypeExactValue.split(", ")
                                         ]
                                     },
                                     "body_unloading": {
                                         "types": [
-                                            transportLoadingUnloadingTypeExactValue
+                                            transportLoadingUnloadingTypeExactValue.split(", ")
                                         ]
                                     }
                                 },
