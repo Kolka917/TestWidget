@@ -17,7 +17,8 @@ btns.forEach((items)=>{
     })
 })
 
-function createCargo(evt) {
+async function createCargo(evt) {
+    await new Promise(resolve => setTimeout(resolve, 1));
 
     let cargoATIIdFieldId
     let cargoNameFieldId
@@ -141,7 +142,6 @@ function createCargo(evt) {
                 let contactsIdValue = await getValue(contactsIdFieldId)
 
 
-
                 console.log('checkArray')
 
                 fetch('https://proxy.cors.sh/https://api.ati.su/v2/cargos', {
@@ -207,7 +207,7 @@ function createCargo(evt) {
                             }
                         }
                     )
-                }).then(r =>  r.json().then(data => ({status: r.status, body: data})))
+                }).then(r => r.json().then(data => ({status: r.status, body: data})))
                     .then(obj => {
                         console.log(obj)
                         if (obj.status === 200) {
@@ -219,6 +219,7 @@ function createCargo(evt) {
                         })
                             .then((r) => {
                                 console.log(r);
+                                evt.target.classList.remove('activeLoading');
                                 alert('Идентификатор созданного груза успешно добавлен в сделку')
                             })
                             .catch((e) => {
@@ -228,12 +229,13 @@ function createCargo(evt) {
             }
         }
     })
-    evt.target.classList.remove('activeLoading');
 
 }
 
 
-function deleteCargo(evt) {
+async function deleteCargo(evt) {
+    await new Promise(resolve => setTimeout(resolve, 1));
+
 
     let cargoATIIdFieldId
 
@@ -270,6 +272,7 @@ function deleteCargo(evt) {
                     }
                 }).then(response => {
                     if (response.status === 200) {
+                        evt.target.classList.remove('activeLoading');
                         alert('Груз успешно удален из ATI')
                     }
                 })
@@ -277,12 +280,12 @@ function deleteCargo(evt) {
             }
         }
     })
-    evt.target.classList.remove('activeLoading');
 
 }
 
 
-function editCargo(evt) {
+async function editCargo(evt) {
+    await new Promise(resolve => setTimeout(resolve, 1));
 
     let cargoATIIdFieldId
     let cargoNameFieldId
@@ -472,6 +475,7 @@ function editCargo(evt) {
                     )
                 }).then(response => {
                     if (response.status === 200) {
+                        evt.target.classList.remove('activeLoading');
                         alert('Груз успешно редактирован в ATI')
                     }
                 })
@@ -479,7 +483,6 @@ function editCargo(evt) {
             }
         }
     })
-    evt.target.classList.remove('activeLoading');
 
 }
 
