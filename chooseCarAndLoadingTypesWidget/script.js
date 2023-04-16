@@ -97,7 +97,7 @@ $(document).ready(function () {
                 })
                 table += '</div>\n' +
                     '        </div>\n' +
-                    '<input type="button" onclick="saveLoadingType()" value="Сохранить тип разгрузки-выгрузки!">'
+                    '<input type="button" onclick="saveLoadingType()" value="Сохранить тип загрузки-выгрузки!">'
                     '    </div>';
 
                 search_result.innerHTML = table;
