@@ -1,60 +1,97 @@
-.dropdown-menu {
-    max-height: 150px;
-    width: 200px;
-    overflow-y: scroll;
+* {
+    padding: 0;
+    margin: 0
 }
 
-.btn-group {
-    width: 200px;
-}
-
-.multiselect {
-    width: 200px;
-}
-
-.selectBox {
+button {
+    padding: 5px 13px;
+    font-size: 1.5em;
+    width:200px;
+    cursor: pointer;
+    border: 0px;
     position: relative;
+    margin: 20px;
+    transition: all .25s ease;
+    background: rgba(116, 23, 231, 1);
+    color: #fff;
+    overflow: hidden;
+    border-radius: 10px
 }
 
-.selectBox select {
-    width: 200px;
+.create {
+    background: rgb(8, 166, 53);
+    color: #fff;
 }
 
-.overSelect {
+.edit {
+    background: rgb(201, 175, 9);
+    color: #fff;
+}
+
+.delete {
+    background: rgb(187, 28, 7);
+    color: #fff;
+}
+
+.load {
     position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: inherit
 }
 
-#mySelectOptions {
-    display: none;
-    border: 0.5px #7c7c7c solid;
-    background-color: #ffffff;
-    max-height: 150px;
-    overflow-y: scroll;
+.load::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    width: 30px;
+    height: 30px;
+    border-left: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    animation: loading1 1s ease infinite;
+    z-index: 10
 }
 
-#mySelectOptions2 {
-    display: none;
-    border: 0.5px #7c7c7c solid;
-    background-color: #ffffff;
-    max-height: 150px;
-    overflow-y: scroll;
+.load::before {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    border: 3px dashed #fff;
+    width: 30px;
+    height: 30px;
+    border-left: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    animation: loading1 2s linear infinite;
+    z-index: 5
 }
 
-#mySelectOptions label {
-    display: block;
-    font-weight: normal;
-    display: block;
-    white-space: nowrap;
-    min-height: 1.2em;
-    background-color: #ffffff00;
-    padding: 0 2.25rem 0 .75rem;
-    /* padding: .375rem 2.25rem .375rem .75rem; */
+@keyframes loading1 {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
 }
 
-#mySelectOptions label:hover {
-    background-color: #1e90ff;
+button.active {
+    transform: scale(.85)
+}
+
+button.activeLoading .loading {
+    visibility: visible;
+    opacity: 1
+}
+
+button .loading {
+    opacity: 0;
+    visibility: hidden
 }

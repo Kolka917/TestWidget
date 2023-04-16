@@ -1,16 +1,19 @@
-document.querySelector("#myButtonCreate").addEventListener("click", function () {
-    createCargo();
+document.querySelector("#myButtonCreate").addEventListener("click", (evt)=>{
+    evt.target.classList.add('activeLoading');
+    createCargo(evt);
 }, false);
 
-document.querySelector("#myButtonDelete").addEventListener("click", function () {
-    deleteCargo();
+document.querySelector("#myButtonDelete").addEventListener("click", (evt)=>{
+    evt.target.classList.add('activeLoading');
+    deleteCargo(evt);
 }, false);
 
-document.querySelector("#myButtonEdit").addEventListener("click", function () {
-    editCargo();
+document.querySelector("#myButtonEdit").addEventListener("click", (evt)=>{
+    evt.target.classList.add('activeLoading');
+    editCargo(evt);
 }, false);
 
-function createCargo() {
+function createCargo(evt) {
 
     let cargoATIIdFieldId
     let cargoNameFieldId
@@ -221,11 +224,12 @@ function createCargo() {
             }
         }
     })
+    evt.target.classList.remove('activeLoading');
 
 }
 
 
-function deleteCargo() {
+function deleteCargo(evt) {
 
     let cargoATIIdFieldId
 
@@ -269,11 +273,12 @@ function deleteCargo() {
             }
         }
     })
+    evt.target.classList.remove('activeLoading');
 
 }
 
 
-function editCargo() {
+function editCargo(evt) {
 
     let cargoATIIdFieldId
     let cargoNameFieldId
@@ -470,6 +475,7 @@ function editCargo() {
             }
         }
     })
+    evt.target.classList.remove('activeLoading');
 
 }
 
