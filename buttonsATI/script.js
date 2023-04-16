@@ -1,17 +1,21 @@
 document.querySelector("#myButtonCreate").addEventListener("click", (evt)=>{
-    evt.target.classList.add('activeLoading');
     createCargo(evt);
 }, false);
 
 document.querySelector("#myButtonDelete").addEventListener("click", (evt)=>{
-    evt.target.classList.add('activeLoading');
     deleteCargo(evt);
 }, false);
 
 document.querySelector("#myButtonEdit").addEventListener("click", (evt)=>{
-    evt.target.classList.add('activeLoading');
     editCargo(evt);
 }, false);
+
+const btns = document.querySelectorAll('button');
+btns.forEach((items)=>{
+    items.addEventListener('click',(evt)=>{
+        evt.target.classList.add('activeLoading');
+    })
+})
 
 function createCargo(evt) {
 

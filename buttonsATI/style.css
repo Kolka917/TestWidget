@@ -1,6 +1,9 @@
-* {
-    padding: 0;
-    margin: 0
+.btn-group {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-around;
+    width: 100%;
 }
 
 button {
@@ -12,25 +15,34 @@ button {
     position: relative;
     margin: 20px;
     transition: all .25s ease;
-    background: rgba(116, 23, 231, 1);
     color: #fff;
     overflow: hidden;
-    border-radius: 10px
+    border-radius: 10px;
+    display: block;
 }
 
 .create {
     background: rgb(8, 166, 53);
     color: #fff;
 }
+.create:hover {
+    background: rgb(5, 126, 40);
+}
 
 .edit {
-    background: rgb(201, 175, 9);
+    background: rgb(241, 210, 12);
     color: #fff;
+}
+.edit:hover {
+    background: rgb(196, 170, 8);
 }
 
 .delete {
-    background: rgb(187, 28, 7);
+    background: rgb(246, 35, 7);
     color: #fff;
+}
+.delete:hover {
+    background: rgb(196, 29, 6);
 }
 
 .load {
