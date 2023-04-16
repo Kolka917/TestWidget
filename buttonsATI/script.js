@@ -178,9 +178,8 @@ function createCargo() {
                                 },
                                 "truck": {
                                     "load_type": transportLoadingUnloadingTypeCommonValue,
-                                    "body_types": [
-                                        transportTypeValue
-                                    ],
+                                    "body_types":
+                                        transportTypeValue.split(", "),
                                     "body_loading": {
                                         "types": transportLoadingUnloadingTypeExactValue.split(", ")
 
@@ -439,9 +438,8 @@ function editCargo() {
                                 },
                                 "truck": {
                                     "load_type": transportLoadingUnloadingTypeCommonValue,
-                                    "body_types": [
-                                        transportTypeValue
-                                    ],
+                                    "body_types":
+                                        transportTypeValue.split(", "),
                                     "body_loading": {
                                         "types":
                                             transportLoadingUnloadingTypeExactValue.split(", ")
