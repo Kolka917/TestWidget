@@ -179,14 +179,11 @@ function createCargo() {
                                         transportTypeValue
                                     ],
                                     "body_loading": {
-                                        "types": [
-                                            transportLoadingUnloadingTypeExactValue.split(", ")
-                                        ]
+                                        "types": transportLoadingUnloadingTypeExactValue.split(", ")
+
                                     },
                                     "body_unloading": {
-                                        "types": [
-                                            transportLoadingUnloadingTypeExactValue.split(", ")
-                                        ]
+                                        "types": transportLoadingUnloadingTypeExactValue.split(", ")
                                     }
                                 },
                                 "payment": {
