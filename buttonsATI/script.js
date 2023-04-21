@@ -273,6 +273,10 @@ async function deleteCargo(evt) {
                 }).then(response => {
                     if (response.status === 200) {
                         evt.target.classList.remove('activeLoading');
+                        window.EnvyCrmWidget.changeDealValue({
+                            input_id: cargoATIIdFieldId,
+                            value: ""
+                        })
                         alert('Груз успешно удален из ATI')
                     }
                 })
