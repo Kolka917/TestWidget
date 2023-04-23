@@ -1,18 +1,18 @@
-document.querySelector("#myButtonCreate").addEventListener("click", (evt)=>{
+document.querySelector("#myButtonCreate").addEventListener("click", (evt) => {
     createCargo(evt);
 }, false);
 
-document.querySelector("#myButtonDelete").addEventListener("click", (evt)=>{
+document.querySelector("#myButtonDelete").addEventListener("click", (evt) => {
     deleteCargo(evt);
 }, false);
 
-document.querySelector("#myButtonEdit").addEventListener("click", (evt)=>{
+document.querySelector("#myButtonEdit").addEventListener("click", (evt) => {
     editCargo(evt);
 }, false);
 
 const btns = document.querySelectorAll('button');
-btns.forEach((items)=>{
-    items.addEventListener('click',(evt)=>{
+btns.forEach((items) => {
+    items.addEventListener('click', (evt) => {
         evt.target.classList.add('activeLoading');
     })
 })
@@ -272,16 +272,17 @@ async function deleteCargo(evt) {
                     }
                 }).then(r => r.json().then(data => ({status: r.status, body: data})))
                     .then(obj => {
-                    if (obj.status === 200) {
-                        evt.target.classList.remove('activeLoading');
-                        window.EnvyCrmWidget.changeDealValue({
-                            input_id: cargoATIIdFieldId,
-                            value: ""
-                        })
-                        return alert('Груз успешно удален из ATI')
-                    }
-                    alert(obj.body.Reason)
-                })
+                        if (obj.status === 200) {
+                            evt.target.classList.remove('activeLoading');
+                            window.EnvyCrmWidget.changeDealValue({
+                                input_id: cargoATIIdFieldId,
+                                value: ""
+                            })
+                            alert('Груз успешно удален из ATI')
+                        } else {
+                            alert(obj.body.Reason)
+                        }
+                    })
             }
             evt.target.classList.remove('activeLoading');
         }
