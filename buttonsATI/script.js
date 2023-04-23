@@ -23,7 +23,6 @@ async function createCargo(evt) {
     let cargoATIIdFieldId
     let cargoNameFieldId
     let cargoQuantityFieldId
-    let cargoUnitsFieldId
     let cargoInnerIdFieldId
     let routeLoadingTypeFieldId
     let routeLoadingCityIdFieldId
@@ -36,7 +35,6 @@ async function createCargo(evt) {
     let transportLoadingUnloadingTypeExactFieldId
     let transportTypeFieldId
     let paymentTypeFieldId
-    let paymentCurrencyTypeFieldId
     let paymentWithVatFieldId
     let paymentWithoutVatFieldId
     let contactsIdFieldId
@@ -79,9 +77,6 @@ async function createCargo(evt) {
                         case ('Маршрут.Загрузка.Параметры груза.Вес. Количество'):
                             cargoQuantityFieldId = d.id;
                             break;
-                        case ('Маршрут.Загрузка.Параметры груза.Вес. Единицы'):
-                            cargoUnitsFieldId = d.id;
-                            break;
                         case ('Маршрут. Разгрузка. Локация.Тип расположения точки'):
                             routeUnloadingTypeFieldId = d.id;
                             break;
@@ -96,9 +91,6 @@ async function createCargo(evt) {
                             break;
                         case ('Оплата. Тип оплаты'):
                             paymentTypeFieldId = d.id;
-                            break;
-                        case ('Оплата. id валюты из словаря'):
-                            paymentCurrencyTypeFieldId = d.id;
                             break;
                         case ('Оплата. Ставка безнал с НДС'):
                             paymentWithVatFieldId = d.id;
@@ -123,7 +115,6 @@ async function createCargo(evt) {
 
                 let cargoNameValue = await getValue(cargoNameFieldId)
                 let cargoQuantityValue = await getValue(cargoQuantityFieldId)
-                let cargoUnitsValue = await getValue(cargoUnitsFieldId)
                 let cargoInnerIdValue = await getValue(cargoInnerIdFieldId)
                 let routeLoadingTypeValue = await getValue(routeLoadingTypeFieldId)
                 let routeLoadingCityIdValue = await getValue(routeLoadingCityIdFieldId)
@@ -136,7 +127,6 @@ async function createCargo(evt) {
                 let transportLoadingUnloadingTypeExactValue = await getValue(transportLoadingUnloadingTypeExactFieldId)
                 let transportTypeValue = await getValue(transportTypeFieldId)
                 let paymentTypeValue = await getValue(paymentTypeFieldId)
-                let paymentCurrencyTypeValue = await getValue(paymentCurrencyTypeFieldId)
                 let paymentWithVatValue = await getValue(paymentWithVatFieldId)
                 let paymentWithoutVatValue = await getValue(paymentWithoutVatFieldId)
                 let contactsIdValue = await getValue(contactsIdFieldId)
@@ -164,7 +154,7 @@ async function createCargo(evt) {
                                                 "name": cargoNameValue,
                                                 "weight": {
                                                     "quantity": cargoQuantityValue,
-                                                    "type": cargoUnitsValue
+                                                    "type": "tons"
                                                 },
                                                 "id": cargoInnerIdValue
                                             }
@@ -197,7 +187,7 @@ async function createCargo(evt) {
                                 },
                                 "payment": {
                                     "type": paymentTypeValue,
-                                    "currency_type": paymentCurrencyTypeValue,
+                                    "currency_type": 1,
                                     "rate_with_vat": paymentWithVatValue,
                                     "rate_without_vat": paymentWithoutVatValue
                                 },
@@ -224,7 +214,7 @@ async function createCargo(evt) {
                                     console.log(e);
                                 });
                         } else {
-                            alert(obj.body)
+                            alert(JSON.stringify(obj.body))
                         }
                     })
             }
@@ -281,7 +271,7 @@ async function deleteCargo(evt) {
                             })
                             alert('Груз успешно удален из ATI')
                         } else {
-                            alert(obj.body.Reason)
+                            alert(JSON.stringify(obj.body))
                         }
                     })
             }
@@ -298,7 +288,6 @@ async function editCargo(evt) {
     let cargoATIIdFieldId
     let cargoNameFieldId
     let cargoQuantityFieldId
-    let cargoUnitsFieldId
     let cargoInnerIdFieldId
     let routeLoadingTypeFieldId
     let routeLoadingCityIdFieldId
@@ -311,7 +300,6 @@ async function editCargo(evt) {
     let transportLoadingUnloadingTypeExactFieldId
     let transportTypeFieldId
     let paymentTypeFieldId
-    let paymentCurrencyTypeFieldId
     let paymentWithVatFieldId
     let paymentWithoutVatFieldId
     let contactsIdFieldId
@@ -353,9 +341,6 @@ async function editCargo(evt) {
                         case ('Маршрут.Загрузка.Параметры груза.Вес. Количество'):
                             cargoQuantityFieldId = d.id;
                             break;
-                        case ('Маршрут.Загрузка.Параметры груза.Вес. Единицы'):
-                            cargoUnitsFieldId = d.id;
-                            break;
                         case ('Маршрут. Разгрузка. Локация.Тип расположения точки'):
                             routeUnloadingTypeFieldId = d.id;
                             break;
@@ -370,9 +355,6 @@ async function editCargo(evt) {
                             break;
                         case ('Оплата. Тип оплаты'):
                             paymentTypeFieldId = d.id;
-                            break;
-                        case ('Оплата. id валюты из словаря'):
-                            paymentCurrencyTypeFieldId = d.id;
                             break;
                         case ('Оплата. Ставка безнал с НДС'):
                             paymentWithVatFieldId = d.id;
@@ -397,7 +379,6 @@ async function editCargo(evt) {
 
                 let cargoNameValue = await getValue(cargoNameFieldId)
                 let cargoQuantityValue = await getValue(cargoQuantityFieldId)
-                let cargoUnitsValue = await getValue(cargoUnitsFieldId)
                 let cargoInnerIdValue = await getValue(cargoInnerIdFieldId)
                 let routeLoadingTypeValue = await getValue(routeLoadingTypeFieldId)
                 let routeLoadingCityIdValue = await getValue(routeLoadingCityIdFieldId)
@@ -410,7 +391,6 @@ async function editCargo(evt) {
                 let transportLoadingUnloadingTypeExactValue = await getValue(transportLoadingUnloadingTypeExactFieldId)
                 let transportTypeValue = await getValue(transportTypeFieldId)
                 let paymentTypeValue = await getValue(paymentTypeFieldId)
-                let paymentCurrencyTypeValue = await getValue(paymentCurrencyTypeFieldId)
                 let paymentWithVatValue = await getValue(paymentWithVatFieldId)
                 let paymentWithoutVatValue = await getValue(paymentWithoutVatFieldId)
                 let contactsIdValue = await getValue(contactsIdFieldId)
@@ -437,7 +417,7 @@ async function editCargo(evt) {
                                                 "name": cargoNameValue,
                                                 "weight": {
                                                     "quantity": cargoQuantityValue,
-                                                    "type": cargoUnitsValue
+                                                    "type": "tons"
                                                 },
                                                 "id": cargoInnerIdValue
                                             }
@@ -471,7 +451,7 @@ async function editCargo(evt) {
                                 },
                                 "payment": {
                                     "type": paymentTypeValue,
-                                    "currency_type": paymentCurrencyTypeValue,
+                                    "currency_type": 1,
                                     "rate_with_vat": paymentWithVatValue,
                                     "rate_without_vat": paymentWithoutVatValue
                                 },
@@ -486,7 +466,6 @@ async function editCargo(evt) {
                     if (obj.status === 200) {
                         alert('Груз успешно редактирован в ATI')
                     } else {
-                        console.log(obj);
                         alert(JSON.stringify(obj.body))
                     }
                 })
