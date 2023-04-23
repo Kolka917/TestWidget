@@ -270,21 +270,20 @@ async function deleteCargo(evt) {
                         'x-cors-api-key': 'temp_96f3dd2cacb5a4a98c8728b253decd48',
                         'Authorization': 'Bearer 6143fe5dba704e469631712649f99a7a'
                     }
-                }).then(response => {
-                    if (response.status === 200) {
+                }).then(r => r.json().then(data => ({status: r.status, body: data})))
+                    .then(obj => {
+                    if (obj.status === 200) {
                         evt.target.classList.remove('activeLoading');
                         window.EnvyCrmWidget.changeDealValue({
                             input_id: cargoATIIdFieldId,
                             value: ""
                         })
-                        alert('Груз успешно удален из ATI')
+                        return alert('Груз успешно удален из ATI')
                     }
+                    alert(obj.body.Reason)
                 })
-                    .catch((error) => {
-                        alert(error)
-                    })
-
             }
+            evt.target.classList.remove('activeLoading');
         }
     })
 
