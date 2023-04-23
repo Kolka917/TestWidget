@@ -224,7 +224,7 @@ async function createCargo(evt) {
                                     console.log(e);
                                 });
                         } else {
-                            alert(obj.body.Reason)
+                            alert(obj.body)
                         }
                     })
             }
@@ -486,7 +486,7 @@ async function editCargo(evt) {
                     if (obj.status === 200) {
                         alert('Груз успешно редактирован в ATI')
                     } else {
-                        alert(obj.body.Reason)
+                        alert(obj.body)
                     }
                 })
 
