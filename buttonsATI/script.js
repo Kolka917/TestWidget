@@ -273,7 +273,6 @@ async function deleteCargo(evt) {
                 }).then(r => r.json().then(data => ({status: r.status, body: data})))
                     .then(obj => {
                         if (obj.status === 200) {
-                            evt.target.classList.remove('activeLoading');
                             window.EnvyCrmWidget.changeDealValue({
                                 input_id: cargoATIIdFieldId,
                                 value: ""
