@@ -280,6 +280,9 @@ async function deleteCargo(evt) {
                         alert('Груз успешно удален из ATI')
                     }
                 })
+                    .catch((error) => {
+                        alert(error)
+                    })
 
             }
         }
