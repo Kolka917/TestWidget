@@ -486,6 +486,7 @@ async function editCargo(evt) {
                     if (obj.status === 200) {
                         alert('Груз успешно редактирован в ATI')
                     } else {
+                        console.log(obj);
                         alert(obj.body)
                     }
                 })
