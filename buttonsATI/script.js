@@ -212,21 +212,23 @@ async function createCargo(evt) {
                         console.log(obj)
                         if (obj.status === 200) {
                             alert('Груз успешно создан в ATI')
-                        }
-                        window.EnvyCrmWidget.changeDealValue({
-                            input_id: cargoATIIdFieldId,
-                            value: obj.body.cargo_application.cargo_id
-                        })
-                            .then((r) => {
-                                console.log(r);
-                                evt.target.classList.remove('activeLoading');
-                                alert('Идентификатор созданного груза успешно добавлен в сделку')
+                            window.EnvyCrmWidget.changeDealValue({
+                                input_id: cargoATIIdFieldId,
+                                value: obj.body.cargo_application.cargo_id
                             })
-                            .catch((e) => {
-                                console.log(e);
-                            });
+                                .then((r) => {
+                                    console.log(r);
+                                    alert('Идентификатор созданного груза успешно добавлен в сделку')
+                                })
+                                .catch((e) => {
+                                    console.log(e);
+                                });
+                        } else {
+                            alert(obj.body.Reason)
+                        }
                     })
             }
+            evt.target.classList.remove('activeLoading');
         }
     })
 
@@ -479,14 +481,17 @@ async function editCargo(evt) {
                             }
                         }
                     )
-                }).then(response => {
-                    if (response.status === 200) {
-                        evt.target.classList.remove('activeLoading');
+                }).then(r => r.json().then(data => ({status: r.status, body: data})))
+                    .then(obj => {
+                    if (obj.status === 200) {
                         alert('Груз успешно редактирован в ATI')
+                    } else {
+                        alert(obj.body.Reason)
                     }
                 })
 
             }
+            evt.target.classList.remove('activeLoading');
         }
     })
 
