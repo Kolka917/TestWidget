@@ -92,6 +92,7 @@ async function createCargo(evt) {
                             break;
                         case ('Оплата. Тип оплаты'):
                             paymentTypeFieldId = d.id;
+                            console.log(paymentTypeFieldId);
                             break;
                         case ('Оплата. Ставка безнал с НДС'):
                             paymentWithVatFieldId = d.id;
@@ -128,6 +129,7 @@ async function createCargo(evt) {
                 let transportLoadingUnloadingTypeExactValue = await getValue(transportLoadingUnloadingTypeExactFieldId)
                 let transportTypeValue = await getValue(transportTypeFieldId)
                 let paymentTypeValue = await getValue(paymentTypeFieldId)
+                console.log(paymentTypeValue);
                 let paymentWithVatValue = await getValue(paymentWithVatFieldId)
                 let paymentWithoutVatValue = await getValue(paymentWithoutVatFieldId)
                 let contactsIdValue = await getValue(contactsIdFieldId)
