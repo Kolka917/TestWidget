@@ -24,6 +24,10 @@ async function createCargo(evt) {
     let cargoNameFieldId
     let cargoQuantityFieldId
     let cargoInnerIdFieldId
+    let cargoVolumeFieldId
+    let cargoHeightFieldId
+    let cargoWidthFieldId
+    let cargoLengthFieldId
     let routeLoadingTypeFieldId
     let routeLoadingCityIdFieldId
     let routeLoadingAddressFieldId
@@ -42,6 +46,7 @@ async function createCargo(evt) {
     let paymentAvailableWithoutVatFieldId
     let paymentAvailableCashFieldId
     let contactsIdFieldId
+    let noteFieldId
 
 
     $.get({
@@ -80,6 +85,18 @@ async function createCargo(evt) {
                             break;
                         case ('Маршрут.Загрузка.Параметры груза.Вес. Количество'):
                             cargoQuantityFieldId = d.id;
+                            break;
+                        case ('Груз. Объем'):
+                            cargoVolumeFieldId = d.id;
+                            break;
+                        case ('Груз. Длина'):
+                            cargoLengthFieldId = d.id;
+                            break;
+                        case ('Груз. Высота'):
+                            cargoHeightFieldId = d.id;
+                            break;
+                        case ('Груз. Ширина'):
+                            cargoWidthFieldId = d.id;
                             break;
                         case ('Маршрут. Разгрузка. Локация.Тип расположения точки'):
                             routeUnloadingTypeFieldId = d.id;
@@ -123,6 +140,9 @@ async function createCargo(evt) {
                         case ('Идентификатор груза в ATI'):
                             cargoATIIdFieldId = d.id;
                             break;
+                        case ('Примечание'):
+                            noteFieldId = d.id;
+                            break;
                         default:
                         // code block
                     }
@@ -132,6 +152,10 @@ async function createCargo(evt) {
                 let cargoNameValue = await getValue(cargoNameFieldId)
                 let cargoQuantityValue = await getValue(cargoQuantityFieldId)
                 let cargoInnerIdValue = await getValue(cargoInnerIdFieldId)
+                let cargoVolumeValue = await getValue(cargoVolumeFieldId)
+                let cargoHeightValue = await getValue(cargoHeightFieldId)
+                let cargoWidthValue = await getValue(cargoWidthFieldId)
+                let cargoLengthValue = await getValue(cargoLengthFieldId)
                 let routeLoadingTypeValue = await getValue(routeLoadingTypeFieldId)
                 let routeLoadingCityIdValue = await getValue(routeLoadingCityIdFieldId)
                 let routeLoadingAddressValue = await getValue(routeLoadingAddressFieldId)
@@ -150,6 +174,7 @@ async function createCargo(evt) {
                 let paymentAvailableWithoutVatValue = await getValue(paymentAvailableWithoutVatFieldId)
                 let paymentAvailableCashValue = await getValue(paymentAvailableCashFieldId)
                 let contactsIdValue = await getValue(contactsIdFieldId)
+                let noteValue = await getValue(noteFieldId)
 
                 fetch('https://proxy.cors.sh/https://api.ati.su/v2/cargos', {
                     method: 'POST',
@@ -161,6 +186,7 @@ async function createCargo(evt) {
                     body: JSON.stringify(
                         {
                             "cargo_application": {
+                                "note": noteValue,
                                 "route": {
                                     "loading": {
                                         "dates": {
@@ -172,6 +198,14 @@ async function createCargo(evt) {
                                                 "weight": {
                                                     "quantity": cargoQuantityValue,
                                                     "type": "tons"
+                                                },
+                                                "volume": {
+                                                    "quantity": cargoVolumeValue
+                                                },
+                                                "sizes": {
+                                                    "length": cargoLengthValue,
+                                                    "height": cargoHeightValue,
+                                                    "width": cargoWidthValue
                                                 },
                                                 "id": cargoInnerIdValue
                                             }
@@ -203,7 +237,8 @@ async function createCargo(evt) {
                                     }
                                 },
                                 "payment": {
-                                    "type": (paymentTypeValue==="3390607") ? "without-bargaining" : "rate-request",
+                                    "hide_counter_offers": true,
+                                    "type": (paymentTypeValue === "3390607") ? "without-bargaining" : "rate-request",
                                     "currency_type": 1,
                                     "rate_with_vat": paymentWithVatValue,
                                     "rate_without_vat": paymentWithoutVatValue,
@@ -309,6 +344,10 @@ async function editCargo(evt) {
     let cargoNameFieldId
     let cargoQuantityFieldId
     let cargoInnerIdFieldId
+    let cargoVolumeFieldId
+    let cargoHeightFieldId
+    let cargoWidthFieldId
+    let cargoLengthFieldId
     let routeLoadingTypeFieldId
     let routeLoadingCityIdFieldId
     let routeLoadingAddressFieldId
@@ -327,6 +366,7 @@ async function editCargo(evt) {
     let paymentAvailableWithoutVatFieldId
     let paymentAvailableCashFieldId
     let contactsIdFieldId
+    let noteFieldId
 
 
     $.get({
@@ -364,6 +404,18 @@ async function editCargo(evt) {
                             break;
                         case ('Маршрут.Загрузка.Параметры груза.Вес. Количество'):
                             cargoQuantityFieldId = d.id;
+                            break;
+                        case ('Груз. Объем'):
+                            cargoVolumeFieldId = d.id;
+                            break;
+                        case ('Груз. Длина'):
+                            cargoLengthFieldId = d.id;
+                            break;
+                        case ('Груз. Высота'):
+                            cargoHeightFieldId = d.id;
+                            break;
+                        case ('Груз. Ширина'):
+                            cargoWidthFieldId = d.id;
                             break;
                         case ('Маршрут. Разгрузка. Локация.Тип расположения точки'):
                             routeUnloadingTypeFieldId = d.id;
@@ -407,6 +459,9 @@ async function editCargo(evt) {
                         case ('Идентификатор груза в ATI'):
                             cargoATIIdFieldId = d.id;
                             break;
+                        case ('Примечание'):
+                            noteFieldId = d.id;
+                            break;
                         default:
                         // code block
                     }
@@ -416,6 +471,10 @@ async function editCargo(evt) {
                 let cargoNameValue = await getValue(cargoNameFieldId)
                 let cargoQuantityValue = await getValue(cargoQuantityFieldId)
                 let cargoInnerIdValue = await getValue(cargoInnerIdFieldId)
+                let cargoVolumeValue = await getValue(cargoVolumeFieldId)
+                let cargoHeightValue = await getValue(cargoHeightFieldId)
+                let cargoWidthValue = await getValue(cargoWidthFieldId)
+                let cargoLengthValue = await getValue(cargoLengthFieldId)
                 let routeLoadingTypeValue = await getValue(routeLoadingTypeFieldId)
                 let routeLoadingCityIdValue = await getValue(routeLoadingCityIdFieldId)
                 let routeLoadingAddressValue = await getValue(routeLoadingAddressFieldId)
@@ -435,6 +494,7 @@ async function editCargo(evt) {
                 let paymentAvailableCashValue = await getValue(paymentAvailableCashFieldId)
                 let contactsIdValue = await getValue(contactsIdFieldId)
                 let cargoATIIdValue = await getValue(cargoATIIdFieldId)
+                let noteValue = await getValue(noteFieldId)
 
 
                 fetch('https://proxy.cors.sh/https://api.ati.su/v2/cargos/' + cargoATIIdValue, {
@@ -447,6 +507,7 @@ async function editCargo(evt) {
                     body: JSON.stringify(
                         {
                             "cargo_application": {
+                                "note": noteValue,
                                 "route": {
                                     "loading": {
                                         "dates": {
@@ -458,6 +519,14 @@ async function editCargo(evt) {
                                                 "weight": {
                                                     "quantity": cargoQuantityValue,
                                                     "type": "tons"
+                                                },
+                                                "volume": {
+                                                    "quantity": cargoVolumeValue
+                                                },
+                                                "sizes": {
+                                                    "length": cargoLengthValue,
+                                                    "height": cargoHeightValue,
+                                                    "width": cargoWidthValue
                                                 },
                                                 "id": cargoInnerIdValue
                                             }
@@ -490,7 +559,8 @@ async function editCargo(evt) {
                                     }
                                 },
                                 "payment": {
-                                    "type": (paymentTypeValue==="3390607") ? "without-bargaining" : "rate-request",
+                                    "hide_counter_offers": true,
+                                    "type": (paymentTypeValue === "3390607") ? "without-bargaining" : "rate-request",
                                     "currency_type": 1,
                                     "rate_with_vat": paymentWithVatValue,
                                     "rate_without_vat": paymentWithoutVatValue,
@@ -506,12 +576,12 @@ async function editCargo(evt) {
                     )
                 }).then(r => r.json().then(data => ({status: r.status, body: data})))
                     .then(obj => {
-                    if (obj.status === 200) {
-                        alert('Груз успешно редактирован в ATI')
-                    } else {
-                        alert(JSON.stringify(obj.body))
-                    }
-                })
+                        if (obj.status === 200) {
+                            alert('Груз успешно редактирован в ATI')
+                        } else {
+                            alert(JSON.stringify(obj.body))
+                        }
+                    })
 
             }
             evt.target.classList.remove('activeLoading');
