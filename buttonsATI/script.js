@@ -203,9 +203,15 @@ async function createCargo(evt) {
                                                     "quantity": cargoVolumeValue
                                                 },
                                                 "sizes": {
-                                                    "length": cargoLengthValue,
-                                                    "height": cargoHeightValue,
-                                                    "width": cargoWidthValue
+                                                    "length": {
+                                                        "value": cargoLengthValue
+                                                    },
+                                                    "height": {
+                                                        "value": cargoHeightValue
+                                                    },
+                                                    "width": {
+                                                        "value": cargoWidthValue
+                                                    }
                                                 },
                                                 "id": cargoInnerIdValue
                                             }
@@ -524,9 +530,15 @@ async function editCargo(evt) {
                                                     "quantity": cargoVolumeValue
                                                 },
                                                 "sizes": {
-                                                    "length": cargoLengthValue,
-                                                    "height": cargoHeightValue,
-                                                    "width": cargoWidthValue
+                                                    "length": {
+                                                        "value": cargoLengthValue
+                                                    },
+                                                    "height": {
+                                                        "value": cargoHeightValue
+                                                    },
+                                                    "width": {
+                                                        "value": cargoWidthValue
+                                                    }
                                                 },
                                                 "id": cargoInnerIdValue
                                             }
