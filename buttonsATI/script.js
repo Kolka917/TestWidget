@@ -49,6 +49,7 @@ async function createCargo(evt) {
         type: 'GET',
         async: false,
         success: async function (data, status) {
+            console.log(data)
             if (status === "success") {
                 console.log(data.result)
                 Array.prototype.forEach.call(data.result, d => {
