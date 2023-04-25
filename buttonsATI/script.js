@@ -496,9 +496,9 @@ async function editCargo(evt) {
                                     "rate_with_vat": paymentWithVatValue,
                                     "rate_without_vat": paymentWithoutVatValue,
                                     "cash": paymentCashValue,
-                                    "rate_with_vat_available": paymentAvailableWithVatValue,
-                                    "rate_without_vat_available": paymentAvailableWithoutVatValue,
-                                    "cash_available": paymentAvailableCashValue
+                                    "rate_with_vat_available": !!paymentAvailableWithVatValue,
+                                    "rate_without_vat_available": !!paymentAvailableWithoutVatValue,
+                                    "cash_available": !!paymentAvailableCashValue
                                 },
                                 "contacts": [
                                     contactsIdValue
