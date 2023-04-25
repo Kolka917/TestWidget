@@ -49,7 +49,6 @@ async function createCargo(evt) {
         type: 'GET',
         async: false,
         success: async function (data, status) {
-            console.log(data)
             if (status === "success") {
                 console.log(data.result)
                 Array.prototype.forEach.call(data.result, d => {
@@ -128,8 +127,12 @@ async function createCargo(evt) {
                 let transportLoadingUnloadingTypeCommonValue = await getValue(transportLoadingUnloadingTypeCommonFieldId)
                 let transportLoadingUnloadingTypeExactValue = await getValue(transportLoadingUnloadingTypeExactFieldId)
                 let transportTypeValue = await getValue(transportTypeFieldId)
+                const response = await window.EnvyCrmWidget.getDealValue({
+                    input_id: paymentTypeFieldId,
+                    type: 'custom'
+                })
+                console.log(response);
                 let paymentTypeValue = await getValue(paymentTypeFieldId)
-                console.log(paymentTypeValue);
                 let paymentWithVatValue = await getValue(paymentWithVatFieldId)
                 let paymentWithoutVatValue = await getValue(paymentWithoutVatFieldId)
                 let contactsIdValue = await getValue(contactsIdFieldId)
