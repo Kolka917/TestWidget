@@ -146,6 +146,11 @@ async function createCargo(evt) {
                 let paymentWithVatValue = await getValue(paymentWithVatFieldId)
                 let paymentWithoutVatValue = await getValue(paymentWithoutVatFieldId)
                 let paymentCashValue = await getValue(paymentCashFieldId)
+                const response = await window.EnvyCrmWidget.getDealValue({
+                    input_id: paymentAvailableWithVatFieldId,
+                    type: 'custom'
+                })
+                console.log(response)
                 let paymentAvailableWithVatValue = await getValue(paymentAvailableWithVatFieldId)
                 let paymentAvailableWithoutVatValue = await getValue(paymentAvailableWithoutVatFieldId)
                 let paymentAvailableCashValue = await getValue(paymentAvailableCashFieldId)
