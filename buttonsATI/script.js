@@ -212,9 +212,8 @@ async function createCargo(evt) {
                                     "rate_without_vat_available": !!parseInt(paymentAvailableWithoutVatValue),
                                     "cash_available": !!parseInt(paymentAvailableCashValue)
                                 },
-                                "contacts": [
-                                    contactsIdValue
-                                ]
+                                "contacts":
+                                    contactsIdValue.split(", ")
                             }
                         }
                     )
@@ -500,9 +499,8 @@ async function editCargo(evt) {
                                     "rate_without_vat_available": !!parseInt(paymentAvailableWithoutVatValue),
                                     "cash_available": !!parseInt(paymentAvailableCashValue)
                                 },
-                                "contacts": [
-                                    contactsIdValue
-                                ]
+                                "contacts":
+                                    contactsIdValue.split(", ")
                             }
                         }
                     )
