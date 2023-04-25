@@ -37,6 +37,10 @@ async function createCargo(evt) {
     let paymentTypeFieldId
     let paymentWithVatFieldId
     let paymentWithoutVatFieldId
+    let paymentCashFieldId
+    let paymentAvailableWithVatFieldId
+    let paymentAvailableWithoutVatFieldId
+    let paymentAvailableCashFieldId
     let contactsIdFieldId
 
 
@@ -91,13 +95,24 @@ async function createCargo(evt) {
                             break;
                         case ('Оплата. Тип оплаты'):
                             paymentTypeFieldId = d.id;
-                            console.log(paymentTypeFieldId);
                             break;
-                        case ('Оплата. Ставка безнал с НДС'):
+                        case ('Оплата. Без торга. Ставка безнал с НДС'):
                             paymentWithVatFieldId = d.id;
                             break;
-                        case ('Оплата.Ставка безнал без НДС'):
+                        case ('Оплата. Без торга. Ставка безнал без НДС'):
                             paymentWithoutVatFieldId = d.id;
+                            break;
+                        case ('Оплата. Без торга. Ставка наличными'):
+                            paymentCashFieldId = d.id;
+                            break;
+                        case ('Оплата. Возможен запрос ставки безнал с НДС'):
+                            paymentAvailableWithVatFieldId = d.id;
+                            break;
+                        case ('Оплата. Возможен запрос ставки безнал без НДС'):
+                            paymentAvailableWithoutVatFieldId = d.id;
+                            break;
+                        case ('Оплата. Возможен запрос ставки наличными'):
+                            paymentAvailableCashFieldId = d.id;
                             break;
                         case ('Контакты. id контактов заявки'):
                             contactsIdFieldId = d.id;
@@ -127,14 +142,13 @@ async function createCargo(evt) {
                 let transportLoadingUnloadingTypeCommonValue = await getValue(transportLoadingUnloadingTypeCommonFieldId)
                 let transportLoadingUnloadingTypeExactValue = await getValue(transportLoadingUnloadingTypeExactFieldId)
                 let transportTypeValue = await getValue(transportTypeFieldId)
-                const response = await window.EnvyCrmWidget.getDealValue({
-                    input_id: paymentTypeFieldId,
-                    type: 'custom'
-                })
-                console.log(response);
                 let paymentTypeValue = await getValue(paymentTypeFieldId)
                 let paymentWithVatValue = await getValue(paymentWithVatFieldId)
                 let paymentWithoutVatValue = await getValue(paymentWithoutVatFieldId)
+                let paymentCashValue = await getValue(paymentCashFieldId)
+                let paymentAvailableWithVatValue = await getValue(paymentAvailableWithVatFieldId)
+                let paymentAvailableWithoutVatValue = await getValue(paymentAvailableWithoutVatFieldId)
+                let paymentAvailableCashValue = await getValue(paymentAvailableCashFieldId)
                 let contactsIdValue = await getValue(contactsIdFieldId)
 
 
@@ -192,10 +206,14 @@ async function createCargo(evt) {
                                     }
                                 },
                                 "payment": {
-                                    "type": paymentTypeValue,
+                                    "type": (paymentTypeValue==="3390607") ? "without-bargaining" : "rate-request",
                                     "currency_type": 1,
                                     "rate_with_vat": paymentWithVatValue,
-                                    "rate_without_vat": paymentWithoutVatValue
+                                    "rate_without_vat": paymentWithoutVatValue,
+                                    "cash": paymentCashValue,
+                                    "rate_with_vat_available": paymentAvailableWithVatValue,
+                                    "rate_without_vat_available": paymentAvailableWithoutVatValue,
+                                    "cash_available": paymentAvailableCashValue
                                 },
                                 "contacts": [
                                     contactsIdValue
@@ -308,6 +326,10 @@ async function editCargo(evt) {
     let paymentTypeFieldId
     let paymentWithVatFieldId
     let paymentWithoutVatFieldId
+    let paymentCashFieldId
+    let paymentAvailableWithVatFieldId
+    let paymentAvailableWithoutVatFieldId
+    let paymentAvailableCashFieldId
     let contactsIdFieldId
 
 
@@ -362,11 +384,23 @@ async function editCargo(evt) {
                         case ('Оплата. Тип оплаты'):
                             paymentTypeFieldId = d.id;
                             break;
-                        case ('Оплата. Ставка безнал с НДС'):
+                        case ('Оплата. Без торга. Ставка безнал с НДС'):
                             paymentWithVatFieldId = d.id;
                             break;
-                        case ('Оплата.Ставка безнал без НДС'):
+                        case ('Оплата. Без торга. Ставка безнал без НДС'):
                             paymentWithoutVatFieldId = d.id;
+                            break;
+                        case ('Оплата. Без торга. Ставка наличными'):
+                            paymentCashFieldId = d.id;
+                            break;
+                        case ('Оплата. Возможен запрос ставки безнал с НДС'):
+                            paymentAvailableWithVatFieldId = d.id;
+                            break;
+                        case ('Оплата. Возможен запрос ставки безнал без НДС'):
+                            paymentAvailableWithoutVatFieldId = d.id;
+                            break;
+                        case ('Оплата. Возможен запрос ставки наличными'):
+                            paymentAvailableCashFieldId = d.id;
                             break;
                         case ('Контакты. id контактов заявки'):
                             contactsIdFieldId = d.id;
@@ -399,6 +433,10 @@ async function editCargo(evt) {
                 let paymentTypeValue = await getValue(paymentTypeFieldId)
                 let paymentWithVatValue = await getValue(paymentWithVatFieldId)
                 let paymentWithoutVatValue = await getValue(paymentWithoutVatFieldId)
+                let paymentCashValue = await getValue(paymentCashFieldId)
+                let paymentAvailableWithVatValue = await getValue(paymentAvailableWithVatFieldId)
+                let paymentAvailableWithoutVatValue = await getValue(paymentAvailableWithoutVatFieldId)
+                let paymentAvailableCashValue = await getValue(paymentAvailableCashFieldId)
                 let contactsIdValue = await getValue(contactsIdFieldId)
                 let cargoATIIdValue = await getValue(cargoATIIdFieldId)
 
@@ -456,10 +494,14 @@ async function editCargo(evt) {
                                     }
                                 },
                                 "payment": {
-                                    "type": paymentTypeValue,
+                                    "type": (paymentTypeValue==="3390607") ? "without-bargaining" : "rate-request",
                                     "currency_type": 1,
                                     "rate_with_vat": paymentWithVatValue,
-                                    "rate_without_vat": paymentWithoutVatValue
+                                    "rate_without_vat": paymentWithoutVatValue,
+                                    "cash": paymentCashValue,
+                                    "rate_with_vat_available": paymentAvailableWithVatValue,
+                                    "rate_without_vat_available": paymentAvailableWithoutVatValue,
+                                    "cash_available": paymentAvailableCashValue
                                 },
                                 "contacts": [
                                     contactsIdValue
