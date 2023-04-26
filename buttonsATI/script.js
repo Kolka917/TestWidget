@@ -32,6 +32,8 @@ async function createCargo(evt) {
     let routeLoadingCityIdFieldId
     let routeLoadingAddressFieldId
     let routeLoadingDatesTypeFieldId
+    let routeLoadingDatesBeginFieldId
+    let routeLoadingDatesEndFieldId
     let routeUnloadingTypeFieldId
     let routeUnloadingCityIdFieldId
     let routeUnloadingAddressFieldId
@@ -76,6 +78,12 @@ async function createCargo(evt) {
                             break;
                         case ('Маршрут. Загрузка. Дата загрузки. Тип.'):
                             routeLoadingDatesTypeFieldId = d.id;
+                            break;
+                        case ('Загрузка. Дата начала'):
+                            routeLoadingDatesBeginFieldId = d.id;
+                            break;
+                        case ('Загрузка. Дата конца'):
+                            routeLoadingDatesEndFieldId = d.id;
                             break;
                         case ('Маршрут.Загрузка.Параметры груза. id груза в списке'):
                             cargoInnerIdFieldId = d.id;
@@ -160,6 +168,9 @@ async function createCargo(evt) {
                 let routeLoadingCityIdValue = await getValue(routeLoadingCityIdFieldId)
                 let routeLoadingAddressValue = await getValue(routeLoadingAddressFieldId)
                 let routeLoadingDatesTypeValue = await getValue(routeLoadingDatesTypeFieldId)
+                let routeLoadingDatesBeginValue = await getValue(routeLoadingDatesBeginFieldId)
+                console.log(routeLoadingDatesBeginValue)
+                let routeLoadingDatesEndValue= await getValue(routeLoadingDatesEndFieldId)
                 let routeUnloadingTypeValue = await getValue(routeUnloadingTypeFieldId)
                 let routeUnloadingCityIdValue = await getValue(routeUnloadingCityIdFieldId)
                 let routeUnloadingAddressValue = await getValue(routeUnloadingAddressFieldId)
@@ -190,7 +201,9 @@ async function createCargo(evt) {
                                 "route": {
                                     "loading": {
                                         "dates": {
-                                            "type": routeLoadingDatesTypeValue
+                                            "type": routeLoadingDatesTypeValue,
+                                            "first_date": routeLoadingDatesBeginValue,
+                                            "last_date": routeLoadingDatesEndValue
                                         },
                                         "cargos": [
                                             {
@@ -358,6 +371,8 @@ async function editCargo(evt) {
     let routeLoadingCityIdFieldId
     let routeLoadingAddressFieldId
     let routeLoadingDatesTypeFieldId
+    let routeLoadingDatesBeginFieldId
+    let routeLoadingDatesEndFieldId
     let routeUnloadingTypeFieldId
     let routeUnloadingCityIdFieldId
     let routeUnloadingAddressFieldId
@@ -401,6 +416,12 @@ async function editCargo(evt) {
                             break;
                         case ('Маршрут. Загрузка. Дата загрузки. Тип.'):
                             routeLoadingDatesTypeFieldId = d.id;
+                            break;
+                        case ('Загрузка. Дата начала'):
+                            routeLoadingDatesBeginFieldId = d.id;
+                            break;
+                        case ('Загрузка. Дата конца'):
+                            routeLoadingDatesEndFieldId = d.id;
                             break;
                         case ('Маршрут.Загрузка.Параметры груза. id груза в списке'):
                             cargoInnerIdFieldId = d.id;
@@ -485,6 +506,8 @@ async function editCargo(evt) {
                 let routeLoadingCityIdValue = await getValue(routeLoadingCityIdFieldId)
                 let routeLoadingAddressValue = await getValue(routeLoadingAddressFieldId)
                 let routeLoadingDatesTypeValue = await getValue(routeLoadingDatesTypeFieldId)
+                let routeLoadingDatesBeginValue = await getValue(routeLoadingDatesBeginFieldId)
+                let routeLoadingDatesEndValue= await getValue(routeLoadingDatesEndFieldId)
                 let routeUnloadingTypeValue = await getValue(routeUnloadingTypeFieldId)
                 let routeUnloadingCityIdValue = await getValue(routeUnloadingCityIdFieldId)
                 let routeUnloadingAddressValue = await getValue(routeUnloadingAddressFieldId)
@@ -517,7 +540,9 @@ async function editCargo(evt) {
                                 "route": {
                                     "loading": {
                                         "dates": {
-                                            "type": routeLoadingDatesTypeValue
+                                            "type": routeLoadingDatesTypeValue,
+                                            "first_date": routeLoadingDatesBeginValue,
+                                            "last_date": routeLoadingDatesEndValue
                                         },
                                         "cargos": [
                                             {
