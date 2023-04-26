@@ -169,7 +169,6 @@ async function createCargo(evt) {
                 let routeLoadingAddressValue = await getValue(routeLoadingAddressFieldId)
                 let routeLoadingDatesTypeValue = await getValue(routeLoadingDatesTypeFieldId)
                 let routeLoadingDatesBeginValue = await getValue(routeLoadingDatesBeginFieldId)
-                console.log(routeLoadingDatesBeginValue)
                 let routeLoadingDatesEndValue= await getValue(routeLoadingDatesEndFieldId)
                 let routeUnloadingTypeValue = await getValue(routeUnloadingTypeFieldId)
                 let routeUnloadingCityIdValue = await getValue(routeUnloadingCityIdFieldId)
@@ -202,8 +201,8 @@ async function createCargo(evt) {
                                     "loading": {
                                         "dates": {
                                             "type": (routeLoadingDatesTypeValue === "3391147") ? "from-date" : "ready",
-                                            "first_date": routeLoadingDatesBeginValue.replaceAll('.', '-'),
-                                            "last_date": routeLoadingDatesEndValue.replaceAll('.', '-')
+                                            "first_date": routeLoadingDatesBeginValue.replaceAll('.', '-')+'T00:00:00',
+                                            "last_date": routeLoadingDatesEndValue.replaceAll('.', '-')+'T00:00:00'
                                         },
                                         "cargos": [
                                             {
@@ -541,8 +540,8 @@ async function editCargo(evt) {
                                     "loading": {
                                         "dates": {
                                             "type": (routeLoadingDatesTypeValue === "3391147") ? "from-date" : "ready",
-                                            "first_date": routeLoadingDatesBeginValue.replaceAll('.', '-'),
-                                            "last_date": routeLoadingDatesEndValue.replaceAll('.', '-')
+                                            "first_date": routeLoadingDatesBeginValue.replaceAll('.', '-')+'T00:00:00',
+                                            "last_date": routeLoadingDatesEndValue.replaceAll('.', '-')+'T00:00:00'
                                         },
                                         "cargos": [
                                             {
