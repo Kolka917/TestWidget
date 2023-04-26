@@ -202,8 +202,8 @@ async function createCargo(evt) {
                                     "loading": {
                                         "dates": {
                                             "type": (routeLoadingDatesTypeValue === "3391147") ? "from-date" : "ready",
-                                            "first_date": routeLoadingDatesBeginValue,
-                                            "last_date": routeLoadingDatesEndValue
+                                            "first_date": routeLoadingDatesBeginValue.replaceAll('.', '-'),
+                                            "last_date": routeLoadingDatesEndValue.replaceAll('.', '-')
                                         },
                                         "cargos": [
                                             {
@@ -541,8 +541,8 @@ async function editCargo(evt) {
                                     "loading": {
                                         "dates": {
                                             "type": (routeLoadingDatesTypeValue === "3391147") ? "from-date" : "ready",
-                                            "first_date": routeLoadingDatesBeginValue,
-                                            "last_date": routeLoadingDatesEndValue
+                                            "first_date": routeLoadingDatesBeginValue.replaceAll('.', '-'),
+                                            "last_date": routeLoadingDatesEndValue.replaceAll('.', '-')
                                         },
                                         "cargos": [
                                             {
