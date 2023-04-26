@@ -31,7 +31,6 @@ $(document).ready(function () {
         success: function (data, status) {
             if (status === "success") {
                 let search_result = document.getElementById('contactsSelect');
-                // let table = '<select class="chosen" multiple="true" style="width:400px;">\n';
                 let table = ''
 
                 data.forEach(function (d) {
@@ -78,7 +77,7 @@ function saveContacts() {
     var w = window.EnvyCrmWidget
     w.changeDealValue({
         input_id: fieldId,
-        value: valueId.join(',')
+        value: valueId.join(', ')
     })
         .then(() => {
             alert('Контакты успешно обновлены')

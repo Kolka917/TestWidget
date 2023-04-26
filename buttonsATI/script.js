@@ -251,7 +251,7 @@ async function createCargo(evt) {
                                     "cash_available": !!parseInt(paymentAvailableCashValue)
                                 },
                                 "contacts":
-                                    contactsIdValue.split(", ")
+                                    contactsIdValue.match(/\d+/)
                             }
                         }
                     )
@@ -576,7 +576,7 @@ async function editCargo(evt) {
                                     "cash_available": !!parseInt(paymentAvailableCashValue)
                                 },
                                 "contacts":
-                                    contactsIdValue.split(", ")
+                                    contactsIdValue.match(/\d+/)
                             }
                         }
                     )
