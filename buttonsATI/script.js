@@ -540,7 +540,7 @@ async function editCargo(evt) {
                                 "route": {
                                     "loading": {
                                         "dates": {
-                                            "type": routeLoadingDatesTypeValue,
+                                            "type": (routeLoadingDatesTypeValue === "3391147") ? "from-date" : "ready",
                                             "first_date": routeLoadingDatesBeginValue,
                                             "last_date": routeLoadingDatesEndValue
                                         },
