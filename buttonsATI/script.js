@@ -152,7 +152,6 @@ async function createCargo(evt) {
                 let cargoWidthValue = await getValue(cargoWidthFieldId)
                 let cargoLengthValue = await getValue(cargoLengthFieldId)
                 let routeLoadingCityIdValue = await getValue(routeLoadingCityIdFieldId)
-                console.log(parseInt(routeLoadingCityIdValue));
                 let routeLoadingAddressValue = await getValue(routeLoadingAddressFieldId)
                 let routeLoadingDatesTypeValue = await getValue(routeLoadingDatesTypeFieldId)
                 let routeLoadingDatesBeginValue = await getValue(routeLoadingDatesBeginFieldId)
@@ -216,14 +215,14 @@ async function createCargo(evt) {
                                         ],
                                         "location": {
                                             "type": "manual",
-                                            "city_id": parseInt(routeLoadingCityIdValue),
+                                            "city_id": routeLoadingCityIdValue.match(/\d+/)[0],
                                             "address": routeLoadingAddressValue
                                         }
                                     },
                                     "unloading": {
                                         "location": {
                                             "type": "manual",
-                                            "city_id": parseInt(routeUnloadingCityIdValue),
+                                            "city_id": routeUnloadingCityIdValue.match(/\d+/)[0],
                                             "address": routeUnloadingAddressValue
                                         }
                                     }
@@ -540,14 +539,14 @@ async function editCargo(evt) {
                                         ],
                                         "location": {
                                             "type": "manual",
-                                            "city_id": parseInt(routeLoadingCityIdValue),
+                                            "city_id": routeLoadingCityIdValue.match(/\d+/)[0],
                                             "address": routeLoadingAddressValue
                                         }
                                     },
                                     "unloading": {
                                         "location": {
                                             "type": "manual",
-                                            "city_id": parseInt(routeUnloadingCityIdValue),
+                                            "city_id": routeUnloadingCityIdValue.match(/\d+/)[0],
                                             "address": routeUnloadingAddressValue
                                         }
                                     }
