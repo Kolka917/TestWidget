@@ -168,6 +168,7 @@ async function createCargo(evt) {
                 let routeLoadingCityIdValue = await getValue(routeLoadingCityIdFieldId)
                 let routeLoadingAddressValue = await getValue(routeLoadingAddressFieldId)
                 let routeLoadingDatesTypeValue = await getValue(routeLoadingDatesTypeFieldId)
+                console.log(routeLoadingDatesTypeValue)
                 let routeLoadingDatesBeginValue = await getValue(routeLoadingDatesBeginFieldId)
                 console.log(routeLoadingDatesBeginValue)
                 let routeLoadingDatesEndValue= await getValue(routeLoadingDatesEndFieldId)
