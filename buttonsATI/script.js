@@ -215,14 +215,14 @@ async function createCargo(evt) {
                                         ],
                                         "location": {
                                             "type": "manual",
-                                            "city_id": routeLoadingCityIdValue,
+                                            "city_id": parseInt(routeLoadingCityIdValue),
                                             "address": routeLoadingAddressValue
                                         }
                                     },
                                     "unloading": {
                                         "location": {
                                             "type": "manual",
-                                            "city_id": routeUnloadingCityIdValue,
+                                            "city_id": parseInt(routeUnloadingCityIdValue),
                                             "address": routeUnloadingAddressValue
                                         }
                                     }
@@ -539,14 +539,14 @@ async function editCargo(evt) {
                                         ],
                                         "location": {
                                             "type": "manual",
-                                            "city_id": routeLoadingCityIdValue,
+                                            "city_id": parseInt(routeLoadingCityIdValue),
                                             "address": routeLoadingAddressValue
                                         }
                                     },
                                     "unloading": {
                                         "location": {
                                             "type": "manual",
-                                            "city_id": routeUnloadingCityIdValue,
+                                            "city_id": parseInt(routeUnloadingCityIdValue),
                                             "address": routeUnloadingAddressValue
                                         }
                                     }

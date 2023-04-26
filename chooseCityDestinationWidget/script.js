@@ -39,7 +39,7 @@ $(document).ready(function () {
                                 '<select id="selectCity" class="search_output" size="6">';
 
                             data.forEach(function (d) {
-                                table += '<option value="' + d.CityId + '"' + '>' + d.FullName + '(' + d.CityId + ')';
+                                table += '<option value="' + d.FullName + ' (' + d.CityId + ')' + '"' + '>' + d.FullName + '(' + d.CityId + ')';
                             })
                             table += '</select>' +
                                 '<input type="button" onclick="display()" value="Выбрать город!">'
