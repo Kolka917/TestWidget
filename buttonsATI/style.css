@@ -22,27 +22,27 @@ button {
 }
 
 .create {
-    background: rgb(8, 166, 53);
+    background: rgb(167, 210, 179);
     color: #fff;
 }
 .create:hover {
-    background: rgb(5, 126, 40);
+    background: rgb(118, 169, 133);
 }
 
 .edit {
-    background: rgb(241, 210, 12);
+    background: rgb(162, 219, 236);
     color: #fff;
 }
 .edit:hover {
-    background: rgb(196, 170, 8);
+    background: rgb(123, 184, 203);
 }
 
 .delete {
-    background: rgb(246, 35, 7);
+    background: rgb(245, 136, 121);
     color: #fff;
 }
 .delete:hover {
-    background: rgb(196, 29, 6);
+    background: rgb(203, 99, 84);
 }
 
 .load {
