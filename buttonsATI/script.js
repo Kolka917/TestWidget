@@ -23,18 +23,15 @@ async function createCargo(evt) {
     let cargoATIIdFieldId
     let cargoNameFieldId
     let cargoQuantityFieldId
-    let cargoInnerIdFieldId
     let cargoVolumeFieldId
     let cargoHeightFieldId
     let cargoWidthFieldId
     let cargoLengthFieldId
-    let routeLoadingTypeFieldId
     let routeLoadingCityIdFieldId
     let routeLoadingAddressFieldId
     let routeLoadingDatesTypeFieldId
     let routeLoadingDatesBeginFieldId
     let routeLoadingDatesEndFieldId
-    let routeUnloadingTypeFieldId
     let routeUnloadingCityIdFieldId
     let routeUnloadingAddressFieldId
     let transportLoadingUnloadingTypeCommonFieldId
@@ -70,9 +67,6 @@ async function createCargo(evt) {
                         case ('Маршрут.Загрузка.Расположение. id Города из словаря'):
                             routeLoadingCityIdFieldId = d.id;
                             break;
-                        case ('Маршрут.Загрузка.Расположение.Тип расположения точки'):
-                            routeLoadingTypeFieldId = d.id;
-                            break;
                         case ('Маршрут. Загрузка. Адрес'):
                             routeLoadingAddressFieldId = d.id;
                             break;
@@ -84,9 +78,6 @@ async function createCargo(evt) {
                             break;
                         case ('Загрузка. Дата конца'):
                             routeLoadingDatesEndFieldId = d.id;
-                            break;
-                        case ('Маршрут.Загрузка.Параметры груза. id груза в списке'):
-                            cargoInnerIdFieldId = d.id;
                             break;
                         case ('Маршрут.Загрузка.Параметры груза. Наименование груза'):
                             cargoNameFieldId = d.id;
@@ -105,9 +96,6 @@ async function createCargo(evt) {
                             break;
                         case ('Груз. Ширина'):
                             cargoWidthFieldId = d.id;
-                            break;
-                        case ('Маршрут. Разгрузка. Локация.Тип расположения точки'):
-                            routeUnloadingTypeFieldId = d.id;
                             break;
                         case ('Маршрут.Разгрузка.Адрес'):
                             routeUnloadingAddressFieldId = d.id;
@@ -159,18 +147,15 @@ async function createCargo(evt) {
 
                 let cargoNameValue = await getValue(cargoNameFieldId)
                 let cargoQuantityValue = await getValue(cargoQuantityFieldId)
-                let cargoInnerIdValue = await getValue(cargoInnerIdFieldId)
                 let cargoVolumeValue = await getValue(cargoVolumeFieldId)
                 let cargoHeightValue = await getValue(cargoHeightFieldId)
                 let cargoWidthValue = await getValue(cargoWidthFieldId)
                 let cargoLengthValue = await getValue(cargoLengthFieldId)
-                let routeLoadingTypeValue = await getValue(routeLoadingTypeFieldId)
                 let routeLoadingCityIdValue = await getValue(routeLoadingCityIdFieldId)
                 let routeLoadingAddressValue = await getValue(routeLoadingAddressFieldId)
                 let routeLoadingDatesTypeValue = await getValue(routeLoadingDatesTypeFieldId)
                 let routeLoadingDatesBeginValue = await getValue(routeLoadingDatesBeginFieldId)
                 let routeLoadingDatesEndValue= await getValue(routeLoadingDatesEndFieldId)
-                let routeUnloadingTypeValue = await getValue(routeUnloadingTypeFieldId)
                 let routeUnloadingCityIdValue = await getValue(routeUnloadingCityIdFieldId)
                 let routeUnloadingAddressValue = await getValue(routeUnloadingAddressFieldId)
                 let transportLoadingUnloadingTypeCommonValue = await getValue(transportLoadingUnloadingTypeCommonFieldId)
@@ -225,18 +210,18 @@ async function createCargo(evt) {
                                                         "value": cargoWidthValue
                                                     }
                                                 },
-                                                "id": cargoInnerIdValue
+                                                "id": 1
                                             }
                                         ],
                                         "location": {
-                                            "type": routeLoadingTypeValue,
+                                            "type": "manual",
                                             "city_id": routeLoadingCityIdValue,
                                             "address": routeLoadingAddressValue
                                         }
                                     },
                                     "unloading": {
                                         "location": {
-                                            "type": routeUnloadingTypeValue,
+                                            "type": "manual",
                                             "city_id": routeUnloadingCityIdValue,
                                             "address": routeUnloadingAddressValue
                                         }
@@ -361,18 +346,15 @@ async function editCargo(evt) {
     let cargoATIIdFieldId
     let cargoNameFieldId
     let cargoQuantityFieldId
-    let cargoInnerIdFieldId
     let cargoVolumeFieldId
     let cargoHeightFieldId
     let cargoWidthFieldId
     let cargoLengthFieldId
-    let routeLoadingTypeFieldId
     let routeLoadingCityIdFieldId
     let routeLoadingAddressFieldId
     let routeLoadingDatesTypeFieldId
     let routeLoadingDatesBeginFieldId
     let routeLoadingDatesEndFieldId
-    let routeUnloadingTypeFieldId
     let routeUnloadingCityIdFieldId
     let routeUnloadingAddressFieldId
     let transportLoadingUnloadingTypeCommonFieldId
@@ -407,9 +389,6 @@ async function editCargo(evt) {
                         case ('Маршрут.Загрузка.Расположение. id Города из словаря'):
                             routeLoadingCityIdFieldId = d.id;
                             break;
-                        case ('Маршрут.Загрузка.Расположение.Тип расположения точки'):
-                            routeLoadingTypeFieldId = d.id;
-                            break;
                         case ('Маршрут. Загрузка. Адрес'):
                             routeLoadingAddressFieldId = d.id;
                             break;
@@ -421,9 +400,6 @@ async function editCargo(evt) {
                             break;
                         case ('Загрузка. Дата конца'):
                             routeLoadingDatesEndFieldId = d.id;
-                            break;
-                        case ('Маршрут.Загрузка.Параметры груза. id груза в списке'):
-                            cargoInnerIdFieldId = d.id;
                             break;
                         case ('Маршрут.Загрузка.Параметры груза. Наименование груза'):
                             cargoNameFieldId = d.id;
@@ -442,9 +418,6 @@ async function editCargo(evt) {
                             break;
                         case ('Груз. Ширина'):
                             cargoWidthFieldId = d.id;
-                            break;
-                        case ('Маршрут. Разгрузка. Локация.Тип расположения точки'):
-                            routeUnloadingTypeFieldId = d.id;
                             break;
                         case ('Маршрут.Разгрузка.Адрес'):
                             routeUnloadingAddressFieldId = d.id;
@@ -496,18 +469,15 @@ async function editCargo(evt) {
 
                 let cargoNameValue = await getValue(cargoNameFieldId)
                 let cargoQuantityValue = await getValue(cargoQuantityFieldId)
-                let cargoInnerIdValue = await getValue(cargoInnerIdFieldId)
                 let cargoVolumeValue = await getValue(cargoVolumeFieldId)
                 let cargoHeightValue = await getValue(cargoHeightFieldId)
                 let cargoWidthValue = await getValue(cargoWidthFieldId)
                 let cargoLengthValue = await getValue(cargoLengthFieldId)
-                let routeLoadingTypeValue = await getValue(routeLoadingTypeFieldId)
                 let routeLoadingCityIdValue = await getValue(routeLoadingCityIdFieldId)
                 let routeLoadingAddressValue = await getValue(routeLoadingAddressFieldId)
                 let routeLoadingDatesTypeValue = await getValue(routeLoadingDatesTypeFieldId)
                 let routeLoadingDatesBeginValue = await getValue(routeLoadingDatesBeginFieldId)
                 let routeLoadingDatesEndValue= await getValue(routeLoadingDatesEndFieldId)
-                let routeUnloadingTypeValue = await getValue(routeUnloadingTypeFieldId)
                 let routeUnloadingCityIdValue = await getValue(routeUnloadingCityIdFieldId)
                 let routeUnloadingAddressValue = await getValue(routeUnloadingAddressFieldId)
                 let transportLoadingUnloadingTypeCommonValue = await getValue(transportLoadingUnloadingTypeCommonFieldId)
@@ -564,18 +534,18 @@ async function editCargo(evt) {
                                                         "value": cargoWidthValue
                                                     }
                                                 },
-                                                "id": cargoInnerIdValue
+                                                "id": 1
                                             }
                                         ],
                                         "location": {
-                                            "type": routeLoadingTypeValue,
+                                            "type": "manual",
                                             "city_id": routeLoadingCityIdValue,
                                             "address": routeLoadingAddressValue
                                         }
                                     },
                                     "unloading": {
                                         "location": {
-                                            "type": routeUnloadingTypeValue,
+                                            "type": "manual",
                                             "city_id": routeUnloadingCityIdValue,
                                             "address": routeUnloadingAddressValue
                                         }
