@@ -36,14 +36,6 @@
     overflow-y: scroll;
 }
 
-#mySelectOptions2 {
-    display: none;
-    border: 0.5px #7c7c7c solid;
-    background-color: #ffffff;
-    max-height: 150px;
-    overflow-y: scroll;
-}
-
 #mySelectOptions label {
     display: block;
     font-weight: normal;
@@ -57,4 +49,8 @@
 
 #mySelectOptions label:hover {
     background-color: #1e90ff;
+}
+
+.chosen {
+    display: block;
 }
