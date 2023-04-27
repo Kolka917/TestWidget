@@ -155,9 +155,7 @@ async function createCargo(evt) {
                 let routeLoadingAddressValue = await getValue(routeLoadingAddressFieldId)
                 let routeLoadingDatesTypeValue = await getValue(routeLoadingDatesTypeFieldId)
                 let routeLoadingDatesBeginValue = await getValue(routeLoadingDatesBeginFieldId)
-                console.log(1)
-                console.log(routeLoadingDatesBeginValue=== null + routeLoadingDatesBeginValue)
-                let routeLoadingDatesEndValue= await getValue(routeLoadingDatesEndFieldId)
+                let routeLoadingDatesEndValue = await getValue(routeLoadingDatesEndFieldId)
                 let routeUnloadingCityIdValue = await getValue(routeUnloadingCityIdFieldId)
                 let routeUnloadingAddressValue = await getValue(routeUnloadingAddressFieldId)
                 let transportLoadingUnloadingTypeCommonValue = await getValue(transportLoadingUnloadingTypeCommonFieldId)
@@ -172,6 +170,11 @@ async function createCargo(evt) {
                 let paymentAvailableCashValue = await getValue(paymentAvailableCashFieldId)
                 let contactsIdValue = await getValue(contactsIdFieldId)
                 let noteValue = await getValue(noteFieldId)
+
+                let sizeJsonPart = ''
+                if (cargoWidthValue != null && cargoHeightValue != null && cargoLengthValue != null) {
+                    sizeJsonPart = '"sizes": {"length": {"value":' + cargoLengthValue + '},"height": {"value":' + cargoHeightValue + '},"width": {"value":' + cargoWidthValue + '}};'
+                }
 
                 fetch('https://proxy.cors.sh/https://api.ati.su/v2/cargos', {
                     method: 'POST',
@@ -188,8 +191,8 @@ async function createCargo(evt) {
                                     "loading": {
                                         "dates": {
                                             "type": (routeLoadingDatesTypeValue === "3391147") ? "from-date" : "ready",
-                                            "first_date": (routeLoadingDatesBeginValue === null) ? null :  routeLoadingDatesBeginValue.split(".").reverse().join("-")+'T00:00:00',
-                                            "last_date": (routeLoadingDatesEndValue === null) ? null :  routeLoadingDatesEndValue.split(".").reverse().join("-")+'T00:00:00'
+                                            "first_date": (routeLoadingDatesBeginValue === null) ? null : routeLoadingDatesBeginValue.split(".").reverse().join("-") + 'T00:00:00',
+                                            "last_date": (routeLoadingDatesEndValue === null) ? null : routeLoadingDatesEndValue.split(".").reverse().join("-") + 'T00:00:00'
                                         },
                                         "cargos": [
                                             {
@@ -201,17 +204,7 @@ async function createCargo(evt) {
                                                 "volume": {
                                                     "quantity": cargoVolumeValue
                                                 },
-                                                "sizes": {
-                                                    "length": {
-                                                        "value": cargoLengthValue
-                                                    },
-                                                    "height": {
-                                                        "value": cargoHeightValue
-                                                    },
-                                                    "width": {
-                                                        "value": cargoWidthValue
-                                                    }
-                                                },
+                                                sizeJsonPart,
                                                 "id": 1
                                             }
                                         ],
@@ -479,7 +472,7 @@ async function editCargo(evt) {
                 let routeLoadingAddressValue = await getValue(routeLoadingAddressFieldId)
                 let routeLoadingDatesTypeValue = await getValue(routeLoadingDatesTypeFieldId)
                 let routeLoadingDatesBeginValue = await getValue(routeLoadingDatesBeginFieldId)
-                let routeLoadingDatesEndValue= await getValue(routeLoadingDatesEndFieldId)
+                let routeLoadingDatesEndValue = await getValue(routeLoadingDatesEndFieldId)
                 let routeUnloadingCityIdValue = await getValue(routeUnloadingCityIdFieldId)
                 let routeUnloadingAddressValue = await getValue(routeUnloadingAddressFieldId)
                 let transportLoadingUnloadingTypeCommonValue = await getValue(transportLoadingUnloadingTypeCommonFieldId)
@@ -512,8 +505,8 @@ async function editCargo(evt) {
                                     "loading": {
                                         "dates": {
                                             "type": (routeLoadingDatesTypeValue === "3391147") ? "from-date" : "ready",
-                                            "first_date": (routeLoadingDatesBeginValue === null) ? null :  routeLoadingDatesBeginValue.split(".").reverse().join("-")+'T00:00:00',
-                                            "last_date": (routeLoadingDatesEndValue === null) ? null :  routeLoadingDatesEndValue.split(".").reverse().join("-")+'T00:00:00'
+                                            "first_date": (routeLoadingDatesBeginValue === null) ? null : routeLoadingDatesBeginValue.split(".").reverse().join("-") + 'T00:00:00',
+                                            "last_date": (routeLoadingDatesEndValue === null) ? null : routeLoadingDatesEndValue.split(".").reverse().join("-") + 'T00:00:00'
                                         },
                                         "cargos": [
                                             {
