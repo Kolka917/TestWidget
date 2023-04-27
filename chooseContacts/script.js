@@ -12,7 +12,7 @@ $(document).ready(function () {
                 let fieldIdContacts = document.getElementById('fieldIdContacts');
                 Array.prototype.forEach.call(data.result, d => {
                     if (d.name === "Контакты. id контактов заявки") {
-                        fieldIdContacts.innerHTML= d.id
+                        fieldIdContacts.innerHTML = d.id
                     }
                 })
             }
@@ -34,13 +34,15 @@ $(document).ready(function () {
                 let table = ''
 
                 data.forEach(function (d) {
-                        table += '<option> '+d.name + ' (' + d.id + ')' +' </option>'
-                    })
+                    table += '<option> ' + d.name + ' (' + d.id + ')' + ' </option>'
+                })
 
 
                 search_result.innerHTML = table;
-                jQuery(".chosen").data("placeholder","Выберите контакты").chosen();
-
+                jQuery(".chosen").chosen(
+                    {
+                        hide_results_on_select: false
+                    })
             }
         }
     });
@@ -60,15 +62,12 @@ function saveContacts() {
     let dealId = '';
 
 
-    for (var i = 0; i < sURLVariables.length; i++)
-    {
+    for (var i = 0; i < sURLVariables.length; i++) {
         var sParameterName = sURLVariables[i].split('=');
-        if (sParameterName[0] === 'deal_id')
-        {
+        if (sParameterName[0] === 'deal_id') {
             dealId = sParameterName[1];
         }
-        if (sParameterName[0] === 'client_id')
-        {
+        if (sParameterName[0] === 'client_id') {
             clientId = sParameterName[1];
         }
     }
@@ -91,7 +90,7 @@ function getSelectValues(select) {
     var options = select && select.options;
     var opt;
 
-    for (var i=0, iLen=options.length; i<iLen; i++) {
+    for (var i = 0, iLen = options.length; i < iLen; i++) {
         opt = options[i];
 
         if (opt.selected) {

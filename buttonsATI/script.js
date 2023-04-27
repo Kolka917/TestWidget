@@ -230,13 +230,13 @@ async function createCargo(evt) {
                                 "truck": {
                                     "load_type": (transportLoadingUnloadingTypeCommonValue === "3391156") ? "dont-care" : "ftl",
                                     "body_types":
-                                        transportTypeValue.split(", "),
+                                        transportTypeValue.match(/\d+/g),
                                     "body_loading": {
-                                        "types": transportLoadingUnloadingTypeExactValue.split(", ")
+                                        "types": transportLoadingUnloadingTypeExactValue.match(/\d+/g)
 
                                     },
                                     "body_unloading": {
-                                        "types": transportLoadingUnloadingTypeExactValue.split(", ")
+                                        "types": transportLoadingUnloadingTypeExactValue.match(/\d+/g)
                                     }
                                 },
                                 "payment": {
@@ -554,14 +554,14 @@ async function editCargo(evt) {
                                 "truck": {
                                     "load_type": (transportLoadingUnloadingTypeCommonValue === "3391156") ? "dont-care" : "ftl",
                                     "body_types":
-                                        transportTypeValue.split(", "),
+                                        transportTypeValue.match(/\d+/g),
                                     "body_loading": {
                                         "types":
-                                            transportLoadingUnloadingTypeExactValue.split(", ")
+                                            transportLoadingUnloadingTypeExactValue.match(/\d+/g)
                                     },
                                     "body_unloading": {
                                         "types":
-                                            transportLoadingUnloadingTypeExactValue.split(", ")
+                                            transportLoadingUnloadingTypeExactValue.match(/\d+/g)
                                     }
                                 },
                                 "payment": {

@@ -13,11 +13,17 @@
 <body>
 <div>
     <div class="search_box">
-        <div id="search_box-result-car-type"></div>
+        <p>Выбор типов кузова</p>
+    <select data-placeholder="Выберите тип кузова..." class="chosenCar" id="carTypeSelect" multiple="true">
+    </select>
+        <input type="button" onclick="saveCarTypes()" value="Сохранить">
     </div>
 
     <div class="search_box">
-        <div id="search_box-result-loading-type"></div>
+        <p>Выбор типов загрузки-выгрузки</p>
+        <select data-placeholder="Выберите тип загрузки-выгрузки..." class="chosenLoading" id="loadingTypeSelect" multiple="true">
+        </select>
+        <input type="button" onclick="saveLoadingTypes()" value="Сохранить">
     </div>
 
     <div id="fieldIdLoading" hidden></div>
