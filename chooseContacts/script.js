@@ -39,8 +39,7 @@ $(document).ready(function () {
 
 
                 search_result.innerHTML = table;
-                console.log(search_result)
-                jQuery(".chosen").data("placeholder","Select Frameworks...").chosen();
+                jQuery(".chosen").data("placeholder","Выберите контакты").chosen();
 
             }
         }
