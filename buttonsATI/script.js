@@ -172,7 +172,6 @@ async function createCargo(evt) {
                 let noteValue = await getValue(noteFieldId)
 
                 let sizeJsonPart = ''
-                console.log(1)
                 if (cargoWidthValue != null && cargoHeightValue != null && cargoLengthValue != null) {
                     sizeJsonPart = '"sizes": {"length": {"value":' + cargoLengthValue + '},"height": {"value":' + cargoHeightValue + '},"width": {"value":' + cargoWidthValue + '}};'
                 }
@@ -490,6 +489,11 @@ async function editCargo(evt) {
                 let cargoATIIdValue = await getValue(cargoATIIdFieldId)
                 let noteValue = await getValue(noteFieldId)
 
+                let sizeJsonPart = ''
+                if (cargoWidthValue != null && cargoHeightValue != null && cargoLengthValue != null) {
+                    sizeJsonPart = '"sizes": {"length": {"value":' + cargoLengthValue + '},"height": {"value":' + cargoHeightValue + '},"width": {"value":' + cargoWidthValue + '}};'
+                }
+
 
                 fetch('https://proxy.cors.sh/https://api.ati.su/v2/cargos/' + cargoATIIdValue, {
                     method: 'PUT',
@@ -519,17 +523,7 @@ async function editCargo(evt) {
                                                 "volume": {
                                                     "quantity": cargoVolumeValue
                                                 },
-                                                "sizes": {
-                                                    "length": {
-                                                        "value": cargoLengthValue
-                                                    },
-                                                    "height": {
-                                                        "value": cargoHeightValue
-                                                    },
-                                                    "width": {
-                                                        "value": cargoWidthValue
-                                                    }
-                                                },
+                                                sizeJsonPart,
                                                 "id": 1
                                             }
                                         ],
