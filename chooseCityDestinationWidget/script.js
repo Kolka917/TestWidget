@@ -63,6 +63,7 @@ function saveCity() {
     var valueId = getSelectValues(select);
     console.log(valueId);
     var fieldId = document.getElementById("fieldId").innerText;
+    console.log(fieldId)
 
     var sPageURL = window.location.search.substring(1);
     var sURLVariables = sPageURL.split('&');
