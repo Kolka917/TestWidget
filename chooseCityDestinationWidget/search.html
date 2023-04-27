@@ -8,70 +8,29 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Bиджет "Выбор города назначения"</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet"/>
 </head>
 <body>
-<p>Выбор города назначения груза</p>
+<p>Выбор города назначения груза. После ввода дождитесь активации выпадающего списка.</p>
 <div class="search_box">
     <form action="index.html?search=">
         <input class="search_input" type="text" name="search" id="search" placeholder="Введите город назначения">
     </form>
-    <div id="search_box-result"></div>
+    <select data-placeholder="Выберите город назначения..." class="chosen" id="citySelect" >
+    </select>
+    <input type="button" onclick="saveCity()" value="Сохранить!">
 
 
     <div id="selectedCityId" hidden></div>
 
     <div id="fieldId" hidden></div>
-    <script>
-        function display() {
-            var select = document.getElementById("selectCity");
-            var valueId = select.options[select.selectedIndex].value;
-            var selectedCityId = document.getElementById("selectedCityId");
-            selectedCityId.innerHTML = valueId;
-            var fieldId = document.getElementById("fieldId").innerHTML;
-
-            var sPageURL = window.location.search.substring(1);
-            var sURLVariables = sPageURL.split('&');
-            console.log(sURLVariables);
-            
-            let clientId = '';
-            let dealId = '';
-            
-
-            for (var i = 0; i < sURLVariables.length; i++)
-            {
-                var sParameterName = sURLVariables[i].split('=');
-                if (sParameterName[0] === 'deal_id')
-                {
-                    dealId = sParameterName[1];
-                }
-                if (sParameterName[0] === 'client_id')
-                {
-                    clientId = sParameterName[1];
-                }
-            }
-            
-            console.log(clientId);
-            console.log(dealId);
-
-            var w = window.EnvyCrmWidget
-            w.changeDealValue({
-                input_id: fieldId,
-                value: valueId
-            })
-                .then((data) => {
-                    console.log(data);
-                    alert('Город доставки успешно обновлен')
-                })
-                .catch((e) => {
-                    console.log(e);
-                });
-        }
-    </script>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdn.saas-support.com/crm_assets/build/widget/js/envycrmwidget.min.js"></script>
-<script type="text/javascript" src="https://kolka917.github.io/TestWidget/chooseCityDestinationWidget/script.js"></script>
+<script type="text/javascript" src="script.js"></script>
+<script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
+
 
 </body>
 </html>

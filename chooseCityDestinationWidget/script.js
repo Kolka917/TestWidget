@@ -33,25 +33,18 @@ $(document).ready(function () {
                 type: 'GET',
                 success: function (data, status) {
                     if (status === "success") {
-                        let search_result = document.getElementById('search_box-result');
-                        if (data.length > 1) {
-                            let table = '<form>' +
-                                '<select id="selectCity" class="search_output" size="6">';
+                        let search_result = document.getElementById('citySelect');
+                        let table = ''
 
-                            data.forEach(function (d) {
-                                table += '<option value="' + d.FullName + ' (' + d.CityId + ')' + '"' + '>' + d.FullName + '(' + d.CityId + ')';
-                            })
-                            table += '</select>' +
-                                '<input type="button" onclick="display()" value="Выбрать город!">'
-                            '</form>';
-
-                            search_result.innerHTML = table;
+                        data.forEach(function (d) {
+                            table += '<option> ' + d.FullName + ' (' + d.CityId + ')' + ' </option>'
+                        })
 
 
-                        } else {
-                            let notFoundResult = '<p>Не найдено города с указанным названием. Если вы уверены, что название верное, попробуйте ввести его еще раз.</p>';
-                            search_result.innerHTML = notFoundResult;
-                        }
+                        search_result.innerHTML = table;
+                        jQuery(".chosen")
+                            .chosen({width: "400px"})
+                            .trigger("chosen:updated");
                     }
                 }
             })
@@ -64,3 +57,54 @@ $(document).ready(function () {
     });
 
 });
+
+function saveCity() {
+    var select = document.getElementById("citySelect");
+    var valueId = getSelectValues(select);
+    console.log(valueId);
+    var fieldId = document.getElementById("selectedCityId").innerText;
+
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&');
+
+    let clientId = '';
+    let dealId = '';
+
+
+    for (var i = 0; i < sURLVariables.length; i++) {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] === 'deal_id') {
+            dealId = sParameterName[1];
+        }
+        if (sParameterName[0] === 'client_id') {
+            clientId = sParameterName[1];
+        }
+    }
+
+    var w = window.EnvyCrmWidget
+    w.changeDealValue({
+        input_id: fieldId,
+        value: valueId.join(', ')
+    })
+        .then(() => {
+            alert('Город назначения успешно обновлен')
+        })
+        .catch((e) => {
+            console.log(e);
+        });
+}
+
+function getSelectValues(select) {
+    var result = [];
+    var options = select && select.options;
+    var opt;
+
+    for (var i = 0, iLen = options.length; i < iLen; i++) {
+        opt = options[i];
+
+        if (opt.selected) {
+            result.push(opt.value || opt.text);
+        }
+    }
+    return result;
+}
