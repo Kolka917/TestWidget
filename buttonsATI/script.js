@@ -79,10 +79,10 @@ async function createCargo(evt) {
                         case ('Загрузка. Дата конца'):
                             routeLoadingDatesEndFieldId = d.id;
                             break;
-                        case ('Маршрут.Загрузка.Параметры груза. Наименование груза'):
+                        case ('Наименование груза'):
                             cargoNameFieldId = d.id;
                             break;
-                        case ('Маршрут.Загрузка.Параметры груза.Вес. Количество'):
+                        case ('Вес, тонны'):
                             cargoQuantityFieldId = d.id;
                             break;
                         case ('Груз. Объем'):
@@ -396,10 +396,10 @@ async function editCargo(evt) {
                         case ('Загрузка. Дата конца'):
                             routeLoadingDatesEndFieldId = d.id;
                             break;
-                        case ('Маршрут.Загрузка.Параметры груза. Наименование груза'):
+                        case ('Наименование груза'):
                             cargoNameFieldId = d.id;
                             break;
-                        case ('Маршрут.Загрузка.Параметры груза.Вес. Количество'):
+                        case ('Вес, тонны'):
                             cargoQuantityFieldId = d.id;
                             break;
                         case ('Груз. Объем'):
