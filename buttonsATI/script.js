@@ -166,7 +166,6 @@ async function createCargo(evt) {
                 let paymentWithoutVatValue = await getValue(paymentWithoutVatFieldId)
                 let paymentCashValue = await getValue(paymentCashFieldId)
                 let paymentAvailableWithVatValue = await getValue(paymentAvailableWithVatFieldId)
-                console.log('vdsfv' + paymentAvailableWithVatValue)
                 let paymentAvailableWithoutVatValue = await getValue(paymentAvailableWithoutVatFieldId)
                 let paymentAvailableCashValue = await getValue(paymentAvailableCashFieldId)
                 let contactsIdValue = await getValue(contactsIdFieldId)
