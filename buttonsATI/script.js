@@ -166,6 +166,7 @@ async function createCargo(evt) {
                 let paymentWithoutVatValue = await getValue(paymentWithoutVatFieldId)
                 let paymentCashValue = await getValue(paymentCashFieldId)
                 let paymentAvailableWithVatValue = await getValue(paymentAvailableWithVatFieldId)
+                console.log('vdsfv' + paymentAvailableWithVatValue)
                 let paymentAvailableWithoutVatValue = await getValue(paymentAvailableWithoutVatFieldId)
                 let paymentAvailableCashValue = await getValue(paymentAvailableCashFieldId)
                 let contactsIdValue = await getValue(contactsIdFieldId)
@@ -174,6 +175,11 @@ async function createCargo(evt) {
                 let sizeJsonPart = ''
                 if (cargoWidthValue != null && cargoHeightValue != null && cargoLengthValue != null) {
                     sizeJsonPart = '"sizes": {"length": {"value":' + cargoLengthValue + '},"height": {"value":' + cargoHeightValue + '},"width": {"value":' + cargoWidthValue + '}};'
+                }
+
+                let volumeJsonPart = ''
+                if (cargoVolumeValue != null) {
+                    volumeJsonPart = '"volume": {"quantity":' + cargoVolumeValue + '}'
                 }
 
                 fetch('https://proxy.cors.sh/https://api.ati.su/v2/cargos', {
@@ -201,9 +207,7 @@ async function createCargo(evt) {
                                                     "quantity": cargoQuantityValue,
                                                     "type": "tons"
                                                 },
-                                                "volume": {
-                                                    "quantity": cargoVolumeValue
-                                                },
+                                                volumeJsonPart,
                                                 sizeJsonPart,
                                                 "id": 1
                                             }
@@ -494,6 +498,11 @@ async function editCargo(evt) {
                     sizeJsonPart = '"sizes": {"length": {"value":' + cargoLengthValue + '},"height": {"value":' + cargoHeightValue + '},"width": {"value":' + cargoWidthValue + '}};'
                 }
 
+                let volumeJsonPart = ''
+                if (cargoVolumeValue != null) {
+                    volumeJsonPart = '"volume": {"quantity":' + cargoVolumeValue + '}'
+                }
+
 
                 fetch('https://proxy.cors.sh/https://api.ati.su/v2/cargos/' + cargoATIIdValue, {
                     method: 'PUT',
@@ -520,9 +529,7 @@ async function editCargo(evt) {
                                                     "quantity": cargoQuantityValue,
                                                     "type": "tons"
                                                 },
-                                                "volume": {
-                                                    "quantity": cargoVolumeValue
-                                                },
+                                                volumeJsonPart,
                                                 sizeJsonPart,
                                                 "id": 1
                                             }
